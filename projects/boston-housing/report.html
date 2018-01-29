@@ -12190,9 +12190,8 @@ Standard deviation of prices: $165,171.13
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong> Splitting dataset into training and testing subsets allows you to measure how accurate your trained model is. Because the testing dataset is not used for training, this 'unseen' data is used after training to check wheter or not (or how much) the model learned how to generalize the data to make predictions.</p>
-<p>If almost all the dataset is used to train the model, the model will obtain very good results (low error rate) on training set, but poor performance on the training set. This is overfitting: the model modeled the training dataset too well, it learned the details in the training dataset to the point that it can't generalize to new data.</p>
-<p>On the other hand, if the training dataset is too small/not enough to the point that the model does not fit the training data, missing the trends in the data, this means the model underfitted. An underfitted model will have also poor performance on the training dataset.</p>
+<p><strong>Answer: </strong> Splitting dataset into training and testing subsets helps us to estimate our model's performance on unseen data. If we use all dataset (without splitting it) for training the model and test it on the same dataset, we'll not be sure wheter the model really learned the trends of data to correctly predict unseen data (maybe the model has just memorized the data, which is called overfitting, that is, our model becomes very specific to the training subset, having poor performance on unseen data). Separating a test subset from the whole dataset and using it for validation after training the model (with only the training subset) helps us to assess the model's performance, once the model had never seen the testing subset, allowing us to check whether or not the model has learned/understood the data.</p>
+<p>A drawback of splitting data into testing and training is that it obviously reduces the training data available.</p>
 
 </div>
 </div>
