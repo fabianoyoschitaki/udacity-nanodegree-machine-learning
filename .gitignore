@@ -1,1 +1,4 @@
-~$MLND\.docx
+*.tmp
+
+# Word temporary
+~$*.doc*
