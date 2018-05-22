@@ -11820,7 +11820,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Import libraries</span>
@@ -11875,7 +11875,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Calculate number of students</span>
@@ -11941,7 +11941,7 @@ Graduation rate of the class: 67.09%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Extract feature columns</span>
@@ -12026,7 +12026,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">preprocess_features</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
@@ -12100,7 +12100,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import any additional functionality you may need here</span>
@@ -12136,8 +12136,6 @@ Feature values:
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Training set has 300 samples.
 Testing set has 95 samples.
-0.336666666667
-0.305263157895
 </pre>
 </div>
 </div>
@@ -12226,7 +12224,7 @@ Testing set has 95 samples.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">train_classifier</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">):</span>
@@ -12298,7 +12296,7 @@ Testing set has 95 samples.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import the three supervised learning models from sklearn</span>
@@ -12351,21 +12349,21 @@ Testing set has 95 samples.
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 Training a SVC using a training set size of 100. . .
-Trained model in 0.0010 seconds
-Made predictions in 0.0010 seconds.
+Trained model in 0.0030 seconds
+Made predictions in 0.0030 seconds.
 F1 score for training set: 0.8366.
 Made predictions in 0.0010 seconds.
 F1 score for test set: 0.8228.
 
 Training a SVC using a training set size of 200. . .
-Trained model in 0.0040 seconds
+Trained model in 0.0060 seconds
 Made predictions in 0.0030 seconds.
 F1 score for training set: 0.8552.
 Made predictions in 0.0010 seconds.
 F1 score for test set: 0.7947.
 
 Training a SVC using a training set size of 300. . .
-Trained model in 0.0070 seconds
+Trained model in 0.0080 seconds
 Made predictions in 0.0060 seconds.
 F1 score for training set: 0.8615.
 Made predictions in 0.0020 seconds.
@@ -12375,40 +12373,40 @@ Training a GaussianNB using a training set size of 100. . .
 Trained model in 0.0010 seconds
 Made predictions in 0.0000 seconds.
 F1 score for training set: 0.5000.
-Made predictions in 0.0000 seconds.
+Made predictions in 0.0010 seconds.
 F1 score for test set: 0.2619.
 
 Training a GaussianNB using a training set size of 200. . .
-Trained model in 0.0010 seconds
-Made predictions in 0.0010 seconds.
+Trained model in 0.0000 seconds
+Made predictions in 0.0000 seconds.
 F1 score for training set: 0.7903.
 Made predictions in 0.0000 seconds.
 F1 score for test set: 0.7481.
 
 Training a GaussianNB using a training set size of 300. . .
 Trained model in 0.0010 seconds
-Made predictions in 0.0010 seconds.
+Made predictions in 0.0000 seconds.
 F1 score for training set: 0.7789.
 Made predictions in 0.0000 seconds.
 F1 score for test set: 0.7794.
 
 Training a RandomForestClassifier using a training set size of 100. . .
-Trained model in 0.0210 seconds
+Trained model in 0.0220 seconds
 Made predictions in 0.0010 seconds.
 F1 score for training set: 0.9921.
 Made predictions in 0.0010 seconds.
 F1 score for test set: 0.7031.
 
 Training a RandomForestClassifier using a training set size of 200. . .
-Trained model in 0.0230 seconds
+Trained model in 0.0250 seconds
 Made predictions in 0.0010 seconds.
 F1 score for training set: 0.9882.
 Made predictions in 0.0010 seconds.
 F1 score for test set: 0.7481.
 
 Training a RandomForestClassifier using a training set size of 300. . .
-Trained model in 0.0250 seconds
-Made predictions in 0.0020 seconds.
+Trained model in 0.0240 seconds
+Made predictions in 0.0010 seconds.
 F1 score for training set: 0.9950.
 Made predictions in 0.0010 seconds.
 F1 score for test set: 0.7692.
@@ -12446,21 +12444,21 @@ F1 score for test set: 0.7692.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">0.0010</td>
-<td style="text-align:center">0.0010</td>
+<td style="text-align:center">0.0030</td>
+<td style="text-align:center">0.0030</td>
 <td style="text-align:center">0.8366</td>
 <td style="text-align:center">0.8228</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.0040</td>
+<td style="text-align:center">0.0060</td>
 <td style="text-align:center">0.0030</td>
 <td style="text-align:center">0.8552</td>
 <td style="text-align:center">0.7947</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">0.0070</td>
+<td style="text-align:center">0.0080</td>
 <td style="text-align:center">0.0060</td>
 <td style="text-align:center">0.8615</td>
 <td style="text-align:center">0.8079</td>
@@ -12487,15 +12485,15 @@ F1 score for test set: 0.7692.
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.0010</td>
-<td style="text-align:center">0.0010</td>
+<td style="text-align:center">0.0000</td>
+<td style="text-align:center">0.0000</td>
 <td style="text-align:center">0.7903</td>
 <td style="text-align:center">0.7481</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
 <td style="text-align:center">0.0010</td>
-<td style="text-align:center">0.0010</td>
+<td style="text-align:center">0.0000</td>
 <td style="text-align:center">0.7789</td>
 <td style="text-align:center">0.7794</td>
 </tr>
@@ -12514,22 +12512,22 @@ F1 score for test set: 0.7692.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">0.0210</td>
+<td style="text-align:center">0.0220</td>
 <td style="text-align:center">0.0010</td>
 <td style="text-align:center">0.9921</td>
 <td style="text-align:center">0.7031</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.0230</td>
+<td style="text-align:center">0.0250</td>
 <td style="text-align:center">0.0010</td>
 <td style="text-align:center">0.9882</td>
 <td style="text-align:center">0.7481</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">0.0250</td>
-<td style="text-align:center">0.0020</td>
+<td style="text-align:center">0.0240</td>
+<td style="text-align:center">0.0010</td>
 <td style="text-align:center">0.9950</td>
 <td style="text-align:center">0.7692</td>
 </tr>
@@ -12561,7 +12559,7 @@ F1 score for test set: 0.7692.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong> Based on the results and taking limited resources, cost and performance into consideration, I chose GaussianNB as the best of the three models used in this experiment. Even though it didn't have the best F1 score on test data (SVC did), the time taken to train and predict was almost the same for all the dataset sizes (100, 200 and 300). So, when the dataset grows up, using GaussianNB would not be a problem taking into account cost and performance. Also, the results showed that the F1 score would increase when more data is added.</p>
+<p><strong>Answer: </strong> Based on the results and taking limited resources, cost and performance into consideration, I chose SVC as the best of the three models used in this experiment. Even though it didn't have the fastest prediction and testing times (as Naive Bayes did) the F<sub>1</sub> score was the highest of the three models, performing very well regardless of the training set size.</p>
 
 </div>
 </div>
@@ -12580,19 +12578,7 @@ F1 score for test set: 0.7692.
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong> 
-First of all, we need to give some information, what we call features, to the algorithm along with the "answer", what we call target. For example, to classify fruits, we provide some samples to the algorithm:</p>
-<ul>
-<li>orange colored, round and weighs 150g: it's an orange;</li>
-<li>orange colored, round and weighs 140g: it's an orange;</li>
-<li>yellow colored, long and weighs 120g: it's a banana;</li>
-<li>yellow colored, long and weighs 130g: it's a banana;</li>
-<li>red colored, round and weighs 160g: it's an apple;</li>
-<li>red colored, round and weigs 150g: it's an apple</li>
-<li>...</li>
-</ul>
-<p>For each of those features (color, format and weight), Naive Bayes will assign a "likelihood value" with the target. 
-For example, to make a prediction on an unknown fruit, for each feature of the fruit, it will increase or decrease the likelihood value based on what the algorithm learned. If the fruit is round, well, apples and oranges are round, but bananas aren't. So we add some value to the first ones. If the fruit is red, well, only apples are red, so we add some value to the likelihood of the new fruit to be an apple and so on.</p>
-<p>Why is the model "naive" Bayes? Because it assumes that the features are independent of each other. For instance, when Google early search for "Chicago Bulls" was using Naive Bayes, which is a sport team, it would return some pictures of bulls and some of cities, like Chicago. This happened because each word of "Chicago Bulls" was considered independent of the other.</p>
+Support Vector Machine is a supervised machine learning algorithm that tries to find a hyperplane which best separates and classifies a dataset into distinct classes. What are support vectors? They are the closest data points to the hyperplane, which in turn you can think of a line that makes the dataset separation. Whenever we want to classify a new point, we only check which side of the hyperplane the point is. To find the best hyperplane, the algorithm tries to find the biggest margin possible. Margin is the distance between the closest point of the dataset to the hyperplane (the support vectors).</p>
 
 </div>
 </div>
@@ -12622,7 +12608,7 @@ For example, to make a prediction on an unknown fruit, for each feature of the f
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import &#39;GridSearchCV&#39; and &#39;make_scorer&#39;</span>
@@ -12630,18 +12616,12 @@ For example, to make a prediction on an unknown fruit, for each feature of the f
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">make_scorer</span>
 
 <span class="c1"># TODO: Create the parameters list you wish to tune</span>
-<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;priors&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span>
-                         <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">],</span>
-                         <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">],</span>
-                         <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">],</span>
-                         <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
-                         <span class="p">[</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span>
-                         <span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span>
-                         <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span>
-                         <span class="p">[</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]]}</span>
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;C&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">],</span>
+              <span class="s1">&#39;kernel&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="s1">&#39;poly&#39;</span><span class="p">,</span> <span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="s1">&#39;sigmoid&#39;</span><span class="p">],</span>
+              <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">,</span> <span class="mf">1000.0</span><span class="p">]}</span>
 
 <span class="c1"># TODO: Initialize the classifier</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># TODO: Make an f1 scoring function using &#39;make_scorer&#39; </span>
 <span class="n">f1_scorer</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">f1_score</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="s1">&#39;yes&#39;</span><span class="p">)</span>
@@ -12674,10 +12654,10 @@ For example, to make a prediction on an unknown fruit, for each feature of the f
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Made predictions in 0.0000 seconds.
-Tuned model has a training F1 score of 0.8000.
-Made predictions in 0.0000 seconds.
-Tuned model has a testing F1 score of 0.8000.
+<pre>Made predictions in 0.0080 seconds.
+Tuned model has a training F1 score of 0.9755.
+Made predictions in 0.0020 seconds.
+Tuned model has a testing F1 score of 0.8025.
 </pre>
 </div>
 </div>
@@ -12699,7 +12679,7 @@ Tuned model has a testing F1 score of 0.8000.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong> The final F<sub>1</sub> score both for training and testing is 0.8000. Through model tunning (which I've only found 1 available parameter for GaussianNB, the "priors") we could increase the F<sub>1</sub> score: from 0.7794 to 0.800.</p>
+<p><strong>Answer: </strong> The final F<sub>1</sub> score for training is 0.9755, which is higher than the untuned model (0.8615) and for testing is 0.8025 which is not higher than the untuned model, but it's very similar.</p>
 
 </div>
 </div>
