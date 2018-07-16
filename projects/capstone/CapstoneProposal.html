@@ -11774,8 +11774,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html" style="margin:auto;">
-<h1 id="Machine-Learning-Engineer-Nanodegree" style="text-align: center">Machine Learning Engineer Nanodegree<a class="anchor-link" href="#Machine-Learning-Engineer-Nanodegree">&#182;</a></h1><h2 id="Using-Supervised-Classification-Algorithms-to-Predict-Income-from-Census-Data" style="text-align: center">Using Supervised Classification Algorithms to Predict Income from Census Data<a class="anchor-link" href="#Using-Supervised-Classification-Algorithms-to-Predict-Income-from-Census-Data">&#182;</a></h2><p style="text-align: center">Fabiano Shoji Yoschitaki<br>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Machine-Learning-Engineer-Nanodegree" style="text-align: center;">Machine Learning Engineer Nanodegree<a class="anchor-link" href="#Machine-Learning-Engineer-Nanodegree">&#182;</a></h1><h2 id="Using-Supervised-Classification-Algorithms-to-Predict-Income-from-Census-Data" style="text-align: center;">Using Supervised Classification Algorithms to Predict Income from Census Data<a class="anchor-link" href="#Using-Supervised-Classification-Algorithms-to-Predict-Income-from-Census-Data">&#182;</a></h2><p style="text-align: center;">Fabiano Shoji Yoschitaki<br>
 June 28th, 2018</p>
 <h2 id="Proposal">Proposal<a class="anchor-link" href="#Proposal">&#182;</a></h2><hr>
 <h3 id="Domain-Background">Domain Background<a class="anchor-link" href="#Domain-Background">&#182;</a></h3><p>The domain background of this project is about predicting money income from the US Census dataset, which is an extraction done by Barry Becker from the 1994 Census database [1]. This dataset was donated to the University of California Irvine's Machine Learning Repository in 1996. The Census dataset is composed of 48842 instances, 14 attributes (or features) and the target: whether or not a person's annual income exceeds 50k.</p>
@@ -11807,9 +11807,9 @@ The description of the columns follow:</p>
 <li><strong>income</strong>: whether or not the person makes more than 50k a year (categorical). Possible values: &gt;50k, &lt;=50k. </li>
 </ul>
 <hr>
-<h3 id="Solution-Statement">Solution Statement<a class="anchor-link" href="#Solution-Statement">&#182;</a></h3><p>The main goal of this project is to apply different machine learning techniques, including supervised classification algorithms such as Gaussian Naive Bayes, Linear Discriminant Analysis, K-Nearest Neighbors, Logistic Regression, Decision Tree, Extreme Gradient Boosting, SVM and Random Forest, to predict from the US Census dataset whether or not money income exceeds 50k a year  (so it is a binary classification task). After applying the chosen supervised algorithms to the dataset, their prediction scores will be evaluated by accuracy metric and the best one (maybe more than one if we have similar high scores) will be selected so that its hyperparameters are tuned using Grid Search technique and eventually apply the newly tuned model on the same training and testing data to compare before and after scores.</p>
+<h3 id="Solution-Statement">Solution Statement<a class="anchor-link" href="#Solution-Statement">&#182;</a></h3><p>The main goal of this project is to apply different machine learning techniques, including supervised classification algorithms such as Gaussian Naive Bayes, Linear Discriminant Analysis, K-Nearest Neighbors, Logistic Regression, Decision Tree, Extreme Gradient Boosting, SVM and Random Forest, to predict from the US Census dataset whether or not money income exceeds 50k a year  (so it is a binary classification task). After applying the chosen supervised algorithms to the dataset, their prediction scores will be evaluated by accuracy metric and the best one (maybe more than one if we have similar high scores) will be selected so that its hyper-parameters are tuned using Grid Search technique and eventually apply the newly tuned model on the same training and testing data to compare before and after scores.</p>
 <hr>
-<h3 id="Benchmark-Model">Benchmark Model<a class="anchor-link" href="#Benchmark-Model">&#182;</a></h3><p>The US Census dataset is a supervised learning classification problem, so I propose to apply - without tuning - all the supervised classification algorithms described in the Solution Statement section and choose the one with the best accuracy score as the benchmark model for this project. Then, after we tune the hyperparameters of the model, it is obviously expected that the tunning can overcome the benchmark model accuracy score.</p>
+<h3 id="Benchmark-Model">Benchmark Model<a class="anchor-link" href="#Benchmark-Model">&#182;</a></h3><p>The US Census dataset is a supervised learning classification problem, so I propose to apply - without tuning - all the supervised classification algorithms described in the Solution Statement section and choose the one with the best accuracy score as the benchmark model for this project. Then, after we tune the hyper-parameters of the model, it is expected that the newly tuned model may overcome the benchmark model accuracy score.</p>
 <hr>
 <h3 id="Evaluation-Metrics">Evaluation Metrics<a class="anchor-link" href="#Evaluation-Metrics">&#182;</a></h3><p>The evaluation metric that will be used in this project is accuracy. It is an appropriate metric for supervised classification problems. Accuracy is a metric that takes considers both correct and incorrect classifications in its formula:</p>
 <p><strong>(TP + TN)/(TP + TN + FP + FN)</strong></p>
@@ -11821,13 +11821,26 @@ The description of the columns follow:</p>
 <li><strong>FN</strong>: False Negative, in our case a person that makes &gt;50k a year and is incorrectly classified as &lt;=50k a year.</li>
 </ul>
 <hr>
-<h3 id="Project-Design">Project Design<a class="anchor-link" href="#Project-Design">&#182;</a></h3><p><em>(approx. 1 page)</em></p>
-<p>In this final section, summarize a theoretical workflow for approaching a solution given the problem. Provide thorough discussion for what strategies you may consider employing, what analysis of the data might be required before being used, or which algorithms will be considered for your implementation. The workflow and discussion that you provide should align with the qualities of the previous sections. Additionally, you are encouraged to include small visualizations, pseudocode, or diagrams to aid in describing the project design, but it is not required. The discussion should clearly outline your intended workflow of the capstone project.</p>
+<h3 id="Project-Design">Project Design<a class="anchor-link" href="#Project-Design">&#182;</a></h3><p>The project is designed in the following steps:</p>
+<ul>
+<li><p><strong>Data and Library Loading: </strong> the first step is to load the US Census dataset in the CSV format from the UCI's Machine Learning Repository and all the libraries needed for the project.</p>
+</li>
+<li><p><strong>Data Exploration: </strong> in this step, we'll do some tasks like: visualize the data, print some samples, check its dimensions, check the most relevant features, show its statistical summary.</p>
+</li>
+<li><p><strong>Data Preparation: </strong> after exploring the data, pre-processing tasks will be done: data cleaning, remove null values, convert categorical features into dummy/indicator variables and split the data into training and testing datasets.</p>
+</li>
+<li><p><strong>Model Selection: </strong> with the prepared data, various supervised classification algorithms will be experimented in order to find compare their results and choose the best one (taking into account the accuracy score) for model tuning.</p>
+</li>
+<li><p><strong>Model Tuning: </strong> after we choose the best model, grid search cross validation will be applied with the objective to tune the hyper-parameters of the model.</p>
+</li>
+<li><p><strong>Final Evaluation: </strong> in this step, the accuracy score of the tuned model will be evaluated by applying it to the testing dataset.</p>
+</li>
+</ul>
 <hr>
-<h4 id="References">References<a class="anchor-link" href="#References">&#182;</a></h4><p>[1] https://archive.ics.uci.edu/ml/support/census+income</p>
+<h4 id="References">References<a class="anchor-link" href="#References">&#182;</a></h4><p>[1] <a href="https://archive.ics.uci.edu/ml/support/census+income">https://archive.ics.uci.edu/ml/support/census+income</a></p>
 <p>[2] Ke Wang and Shiyu Zhou and Ada Wai-Chee Fu and Jeffrey Xu Yu. Mining Changes of Classification by Correspondence Tracing. SDM. 2003.</p>
 <p>[3] Bart Hamers and J. A. K Suykens. Coupled Transductive Ensemble Learning of Kernel Models. Bart De Moor. 2003.</p>
-<p>[4] Dua, D. and Karra Taniskidou, E. (2017). UCI Machine Learning Repository [http://archive.ics.uci.edu/ml]. Irvine, CA: University of California, School of Information and Computer Science.</p>
+<p>[4] Dua, D. and Karra Taniskidou, E. (2017). UCI Machine Learning Repository [<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>]. Irvine, CA: University of California, School of Information and Computer Science.</p>
 
 </div>
 </div>
