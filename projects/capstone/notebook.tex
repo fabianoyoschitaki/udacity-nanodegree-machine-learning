@@ -1,0 +1,1465 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{CapstoneProject}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \section{Machine Learning Engineer
+Nanodegree}\label{machine-learning-engineer-nanodegree}
+
+\subsection{Using Supervised Classification Algorithms to Predict Bank
+Term Deposit
+Subscription}\label{using-supervised-classification-algorithms-to-predict-bank-term-deposit-subscription}
+
+Fabiano Shoji Yoschitaki\\
+July 8th, 2018
+
+\subsection{Project Design}\label{project-design}
+
+As it is described the capstone proposal document, the project is
+composed of the following activites:
+
+\begin{itemize}
+\item
+  \textbf{Data and Library Loading: } the first step is to load the Bank
+  Marketing data set in the CSV format from the UCI's Machine Learning
+  Repository and all the libraries needed for the project.
+\item
+  \textbf{Data Exploration: } in this step, we'll do some tasks like:
+  visualize the data, print some samples, check its dimensions, check
+  the most relevant features, show its statistical summary.
+\item
+  \textbf{Data Preparation: } after exploring the data, pre-processing
+  tasks will be done: data cleaning, remove null values, convert
+  categorical features into dummy/indicator variables and split the data
+  into training and testing datasets.
+\item
+  \textbf{Model Selection: } with the prepared data, various supervised
+  classification algorithms will be experimented in order to find
+  compare their results and choose the best one (taking into account the
+  accuracy score) for model tuning.
+\item
+  \textbf{Model Tuning: } after we choose the best model, grid search
+  cross validation will be applied with the objective to tune the
+  hyper-parameters of the model.
+\item
+  \textbf{Final Evaluation: } in this step, the accuracy score of the
+  tuned model will be evaluated by applying it to the testing dataset.
+\end{itemize}
+
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\subsubsection{1. Data and Library
+Loading}\label{data-and-library-loading}
+
+In this section, we will load the dataset and the libraries used in the
+project.
+
+    \paragraph{1.1. Library Loading}\label{library-loading}
+
+Loading all libraries needed for the project.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
+        \PY{k+kn}{import} \PY{n+nn}{seaborn} \PY{k}{as} \PY{n+nn}{sns}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+        
+        \PY{k+kn}{from} \PY{n+nn}{time} \PY{k}{import} \PY{n}{time}
+        \PY{k+kn}{from} \PY{n+nn}{pandas}\PY{n+nn}{.}\PY{n+nn}{tools}\PY{n+nn}{.}\PY{n+nn}{plotting} \PY{k}{import} \PY{n}{scatter\PYZus{}matrix}
+        \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k}{import} \PY{n}{display}
+        
+        \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{preprocessing} \PY{k}{import} \PY{n}{StandardScaler}
+        
+        \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{linear\PYZus{}model} \PY{k}{import} \PY{n}{LinearRegression}
+        \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{linear\PYZus{}model} \PY{k}{import} \PY{n}{LogisticRegression}
+        \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{linear\PYZus{}model} \PY{k}{import} \PY{n}{SGDClassifier}
+        \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{tree} \PY{k}{import} \PY{n}{DecisionTreeClassifier}
+        \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{neighbors} \PY{k}{import} \PY{n}{KNeighborsClassifier}
+        \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{discriminant\PYZus{}analysis} \PY{k}{import} \PY{n}{LinearDiscriminantAnalysis}
+        \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{naive\PYZus{}bayes} \PY{k}{import} \PY{n}{GaussianNB}
+        \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{ensemble} \PY{k}{import} \PY{n}{RandomForestClassifier}
+        \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{ensemble} \PY{k}{import} \PY{n}{AdaBoostClassifier}
+        \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{ensemble} \PY{k}{import} \PY{n}{BaggingClassifier}
+        \PY{k+kn}{from} \PY{n+nn}{xgboost}\PY{n+nn}{.}\PY{n+nn}{sklearn} \PY{k}{import} \PY{n}{XGBClassifier}
+        \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{svm} \PY{k}{import} \PY{n}{SVC}
+        \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{dummy} \PY{k}{import} \PY{n}{DummyClassifier}
+        
+        \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{metrics} \PY{k}{import} \PY{n}{accuracy\PYZus{}score}
+        \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{metrics} \PY{k}{import} \PY{n}{f1\PYZus{}score}
+        \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{metrics} \PY{k}{import} \PY{n}{roc\PYZus{}auc\PYZus{}score}
+        \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{metrics} \PY{k}{import} \PY{n}{classification\PYZus{}report}
+        \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{metrics} \PY{k}{import} \PY{n}{confusion\PYZus{}matrix}
+        \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{metrics} \PY{k}{import} \PY{n}{make\PYZus{}scorer}
+        
+        \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{model\PYZus{}selection} \PY{k}{import} \PY{n}{GridSearchCV}
+        \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{model\PYZus{}selection} \PY{k}{import} \PY{n}{ShuffleSplit}
+        \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{model\PYZus{}selection} \PY{k}{import} \PY{n}{cross\PYZus{}val\PYZus{}score}
+        \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{model\PYZus{}selection} \PY{k}{import} \PY{n}{train\PYZus{}test\PYZus{}split}
+        
+        \PY{k+kn}{import} \PY{n+nn}{warnings}
+        \PY{n}{warnings}\PY{o}{.}\PY{n}{filterwarnings}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ignore}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{sns}\PY{o}{.}\PY{n}{set}\PY{p}{(}\PY{n}{style}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{whitegrid}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+\end{Verbatim}
+
+
+    \paragraph{1.2. Data Loading}\label{data-loading}
+
+Loading the dataset from the CSV file.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{bank\PYZus{}full\PYZus{}data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bank\PYZhy{}full.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{delimiter}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{;}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Bank dataset was loaded successfully!}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Bank dataset was loaded successfully!
+
+    \end{Verbatim}
+
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\subsubsection{2. Data Exploration}\label{data-exploration}
+
+Here we will apply some methods/techniques for Exploratory Data Analysis
+to better understand the data.
+
+    \paragraph{2.1. Data Dimensions}\label{data-dimensions}
+
+Printing the first 10 rows from the data.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The dataset has }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{ rows and }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{ columns}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{bank\PYZus{}full\PYZus{}data}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{bank\PYZus{}full\PYZus{}data}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+The dataset has 45211 rows and 17 columns
+
+    \end{Verbatim}
+
+    \paragraph{2.2. Data Information}\label{data-information}
+
+Printing information about column dtypes, non null values and memory
+usage.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{bank\PYZus{}full\PYZus{}data}\PY{o}{.}\PY{n}{info}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 45211 entries, 0 to 45210
+Data columns (total 17 columns):
+age          45211 non-null int64
+job          45211 non-null object
+marital      45211 non-null object
+education    45211 non-null object
+default      45211 non-null object
+balance      45211 non-null int64
+housing      45211 non-null object
+loan         45211 non-null object
+contact      45211 non-null object
+day          45211 non-null int64
+month        45211 non-null object
+duration     45211 non-null int64
+campaign     45211 non-null int64
+pdays        45211 non-null int64
+previous     45211 non-null int64
+poutcome     45211 non-null object
+y            45211 non-null object
+dtypes: int64(7), object(10)
+memory usage: 5.9+ MB
+
+    \end{Verbatim}
+
+    \paragraph{2.3. Data Samples}\label{data-samples}
+
+Printing the first 10 rows of the data.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{bank\PYZus{}full\PYZus{}data}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:}    age           job   marital  education default  balance housing loan  \textbackslash{}
+        0   58    management   married   tertiary      no     2143     yes   no   
+        1   44    technician    single  secondary      no       29     yes   no   
+        2   33  entrepreneur   married  secondary      no        2     yes  yes   
+        3   47   blue-collar   married    unknown      no     1506     yes   no   
+        4   33       unknown    single    unknown      no        1      no   no   
+        5   35    management   married   tertiary      no      231     yes   no   
+        6   28    management    single   tertiary      no      447     yes  yes   
+        7   42  entrepreneur  divorced   tertiary     yes        2     yes   no   
+        8   58       retired   married    primary      no      121     yes   no   
+        9   43    technician    single  secondary      no      593     yes   no   
+        
+           contact  day month  duration  campaign  pdays  previous poutcome   y  
+        0  unknown    5   may       261         1     -1         0  unknown  no  
+        1  unknown    5   may       151         1     -1         0  unknown  no  
+        2  unknown    5   may        76         1     -1         0  unknown  no  
+        3  unknown    5   may        92         1     -1         0  unknown  no  
+        4  unknown    5   may       198         1     -1         0  unknown  no  
+        5  unknown    5   may       139         1     -1         0  unknown  no  
+        6  unknown    5   may       217         1     -1         0  unknown  no  
+        7  unknown    5   may       380         1     -1         0  unknown  no  
+        8  unknown    5   may        50         1     -1         0  unknown  no  
+        9  unknown    5   may        55         1     -1         0  unknown  no  
+\end{Verbatim}
+            
+    \paragraph{2.4. Data Descriptive
+Statistics}\label{data-descriptive-statistics}
+
+Visualizing statistical summary of the data.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{bank\PYZus{}full\PYZus{}data}\PY{o}{.}\PY{n}{describe}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:}                 age        balance           day      duration      campaign  \textbackslash{}
+        count  45211.000000   45211.000000  45211.000000  45211.000000  45211.000000   
+        mean      40.936210    1362.272058     15.806419    258.163080      2.763841   
+        std       10.618762    3044.765829      8.322476    257.527812      3.098021   
+        min       18.000000   -8019.000000      1.000000      0.000000      1.000000   
+        25\%       33.000000      72.000000      8.000000    103.000000      1.000000   
+        50\%       39.000000     448.000000     16.000000    180.000000      2.000000   
+        75\%       48.000000    1428.000000     21.000000    319.000000      3.000000   
+        max       95.000000  102127.000000     31.000000   4918.000000     63.000000   
+        
+                      pdays      previous  
+        count  45211.000000  45211.000000  
+        mean      40.197828      0.580323  
+        std      100.128746      2.303441  
+        min       -1.000000      0.000000  
+        25\%       -1.000000      0.000000  
+        50\%       -1.000000      0.000000  
+        75\%       -1.000000      0.000000  
+        max      871.000000    275.000000  
+\end{Verbatim}
+            
+    \paragraph{2.5 Data General Information}\label{data-general-information}
+
+Exploring features information.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} Calculate number of clients}
+        \PY{n}{n\PYZus{}clients} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{bank\PYZus{}full\PYZus{}data}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} Calculate clients who have subscribed}
+        \PY{n}{n\PYZus{}clients\PYZus{}subscribed} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{bank\PYZus{}full\PYZus{}data}\PY{p}{[}\PY{n}{bank\PYZus{}full\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{yes}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} Calculate clients who haven\PYZsq{}t subscribed}
+        \PY{n}{n\PYZus{}clients\PYZus{}not\PYZus{}subscribed} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{bank\PYZus{}full\PYZus{}data}\PY{p}{[}\PY{n}{bank\PYZus{}full\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{no}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} Calculate graduation rate}
+        \PY{n}{subscription\PYZus{}rate} \PY{o}{=} \PY{n+nb}{float}\PY{p}{(}\PY{n}{n\PYZus{}clients\PYZus{}subscribed}\PY{p}{)}\PY{o}{/}\PY{n+nb}{float}\PY{p}{(}\PY{n}{n\PYZus{}clients}\PY{p}{)} \PY{o}{*} \PY{l+m+mi}{100}
+        
+        \PY{c+c1}{\PYZsh{} Print the results}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Total number of clients: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{n\PYZus{}clients}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Number of clients who have subscribed: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{n\PYZus{}clients\PYZus{}subscribed}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Number of clients who haven}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{t subscribed: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{n\PYZus{}clients\PYZus{}not\PYZus{}subscribed}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Subscription rate of the dataset: }\PY{l+s+si}{\PYZob{}:.2f\PYZcb{}}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{subscription\PYZus{}rate}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{No\PYZhy{}Subscription rate of the dataset: }\PY{l+s+si}{\PYZob{}:.2f\PYZcb{}}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{l+m+mi}{100}\PY{o}{\PYZhy{}}\PY{n}{subscription\PYZus{}rate}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Total number of clients: 45211
+Number of clients who have subscribed: 5289
+Number of clients who haven't subscribed: 39922
+Subscription rate of the dataset: 11.70\%
+No-Subscription rate of the dataset: 88.30\%
+
+    \end{Verbatim}
+
+    \paragraph{2.6. Visualization}\label{visualization}
+
+Generating some graphs for visualization.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Distribution of Clients Subscribed vs Not Subscribed}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{n}{bank\PYZus{}full\PYZus{}data}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{y}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{plot}\PY{o}{.}\PY{n}{bar}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}8}]:} <matplotlib.axes.\_subplots.AxesSubplot at 0x7f13e07713c8>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_18_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{age\PYZus{}histogram} \PY{o}{=} \PY{n}{sns}\PY{o}{.}\PY{n}{distplot}\PY{p}{(}\PY{n}{bank\PYZus{}full\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Distribution by Age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{age\PYZus{}histogram}\PY{o}{.}\PY{n}{figure}\PY{o}{.}\PY{n}{set\PYZus{}size\PYZus{}inches}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_19_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{figure} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}
+         \PY{n}{mask} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros\PYZus{}like}\PY{p}{(}\PY{n}{bank\PYZus{}full\PYZus{}data}\PY{o}{.}\PY{n}{corr}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{bool}\PY{p}{)}
+         \PY{n}{mask}\PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{triu\PYZus{}indices\PYZus{}from}\PY{p}{(}\PY{n}{mask}\PY{p}{)}\PY{p}{]} \PY{o}{=} \PY{k+kc}{True}
+         \PY{n}{sns}\PY{o}{.}\PY{n}{heatmap}\PY{p}{(}\PY{n}{bank\PYZus{}full\PYZus{}data}\PY{o}{.}\PY{n}{corr}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{mask}\PY{o}{=}\PY{n}{mask}\PY{p}{,} \PY{n}{annot}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,} \PY{n}{cmap}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Blues}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{figure}\PY{o}{.}\PY{n}{suptitle}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Correlation Matrix}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{15}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}10}]:} Text(0.5,0.98,'Correlation Matrix')
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_20_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{pd}\PY{o}{.}\PY{n}{plotting}\PY{o}{.}\PY{n}{scatter\PYZus{}matrix}\PY{p}{(}\PY{n}{bank\PYZus{}full\PYZus{}data}\PY{p}{,} \PY{n}{alpha} \PY{o}{=} \PY{l+m+mf}{0.3}\PY{p}{,} \PY{n}{figsize} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{n}{diagonal} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{kde}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_21_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\subsubsection{3. Data Preparation}\label{data-preparation}
+
+In this section we will apply some methods/techniques for Data
+Preprocessing.
+
+    \paragraph{3.1. Checking for null
+values}\label{checking-for-null-values}
+
+If the dataset has null values, we must
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{bank\PYZus{}full\PYZus{}data}\PY{o}{.}\PY{n}{isnull}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}12}]:} age          0
+         job          0
+         marital      0
+         education    0
+         default      0
+         balance      0
+         housing      0
+         loan         0
+         contact      0
+         day          0
+         month        0
+         duration     0
+         campaign     0
+         pdays        0
+         previous     0
+         poutcome     0
+         y            0
+         dtype: int64
+\end{Verbatim}
+            
+    \paragraph{3.1. Preprocessing Features}\label{preprocessing-features}
+
+Applying pandas\_get\_dummies to convert categorical features into
+binary variables. Also, we'll replace 'yes' -\textgreater{} 1, 'no'
+-\textgreater{} 0.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{k}{def} \PY{n+nf}{preprocess\PYZus{}features}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{:}
+             \PY{l+s+sd}{\PYZsq{}\PYZsq{}\PYZsq{} Preprocesses the student data and converts non\PYZhy{}numeric binary variables into}
+         \PY{l+s+sd}{        binary (0/1) variables. Converts categorical variables into dummy variables. \PYZsq{}\PYZsq{}\PYZsq{}}
+             
+             \PY{c+c1}{\PYZsh{} Initialize new output DataFrame}
+             \PY{n}{output} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{index} \PY{o}{=} \PY{n}{X}\PY{o}{.}\PY{n}{index}\PY{p}{)}
+         
+             \PY{c+c1}{\PYZsh{} Investigate each feature column for the data}
+             \PY{k}{for} \PY{n}{col}\PY{p}{,} \PY{n}{col\PYZus{}data} \PY{o+ow}{in} \PY{n}{X}\PY{o}{.}\PY{n}{iteritems}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+                 
+                 \PY{c+c1}{\PYZsh{} If data type is non\PYZhy{}numeric, replace all yes/no values with 1/0}
+                 \PY{k}{if} \PY{n}{col\PYZus{}data}\PY{o}{.}\PY{n}{dtype} \PY{o}{==} \PY{n+nb}{object}\PY{p}{:}
+                     \PY{n}{col\PYZus{}data} \PY{o}{=} \PY{n}{col\PYZus{}data}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{yes}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{no}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+         
+                 \PY{c+c1}{\PYZsh{} If data type is categorical, convert to dummy variables}
+                 \PY{k}{if} \PY{n}{col\PYZus{}data}\PY{o}{.}\PY{n}{dtype} \PY{o}{==} \PY{n+nb}{object}\PY{p}{:}
+                     \PY{c+c1}{\PYZsh{} Example: \PYZsq{}school\PYZsq{} =\PYZgt{} \PYZsq{}school\PYZus{}GP\PYZsq{} and \PYZsq{}school\PYZus{}MS\PYZsq{}}
+                     \PY{n}{col\PYZus{}data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{get\PYZus{}dummies}\PY{p}{(}\PY{n}{col\PYZus{}data}\PY{p}{,} \PY{n}{prefix} \PY{o}{=} \PY{n}{col}\PY{p}{)}  
+                             
+                 \PY{c+c1}{\PYZsh{} Collect the revised columns}
+                 \PY{n}{output} \PY{o}{=} \PY{n}{output}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{col\PYZus{}data}\PY{p}{)}
+             
+             \PY{k}{return} \PY{n}{output}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{n}{bank\PYZus{}full\PYZus{}data} \PY{o}{=} \PY{n}{preprocess\PYZus{}features}\PY{p}{(}\PY{n}{bank\PYZus{}full\PYZus{}data}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Processed feature columns (}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{ total features): }\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{bank\PYZus{}full\PYZus{}data}\PY{o}{.}\PY{n}{columns}\PY{p}{)}\PY{p}{,} \PY{n+nb}{list}\PY{p}{(}\PY{n}{bank\PYZus{}full\PYZus{}data}\PY{o}{.}\PY{n}{columns}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Processed feature columns (49 total features): 
+['age', 'job\_admin.', 'job\_blue-collar', 'job\_entrepreneur', 'job\_housemaid', 'job\_management', 'job\_retired', 'job\_self-employed', 'job\_services', 'job\_student', 'job\_technician', 'job\_unemployed', 'job\_unknown', 'marital\_divorced', 'marital\_married', 'marital\_single', 'education\_primary', 'education\_secondary', 'education\_tertiary', 'education\_unknown', 'default', 'balance', 'housing', 'loan', 'contact\_cellular', 'contact\_telephone', 'contact\_unknown', 'day', 'month\_apr', 'month\_aug', 'month\_dec', 'month\_feb', 'month\_jan', 'month\_jul', 'month\_jun', 'month\_mar', 'month\_may', 'month\_nov', 'month\_oct', 'month\_sep', 'duration', 'campaign', 'pdays', 'previous', 'poutcome\_failure', 'poutcome\_other', 'poutcome\_success', 'poutcome\_unknown', 'y']
+
+    \end{Verbatim}
+
+    \paragraph{3.2. Identifying Feature and Target
+Columns}\label{identifying-feature-and-target-columns}
+
+Separating the feature columns from the target column.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{c+c1}{\PYZsh{} Extract feature columns}
+         \PY{n}{feature\PYZus{}cols} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n}{bank\PYZus{}full\PYZus{}data}\PY{o}{.}\PY{n}{columns}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} Extract target column \PYZsq{}y\PYZsq{} (subscribed/not subscribed)}
+         \PY{n}{target\PYZus{}col} \PY{o}{=} \PY{n}{bank\PYZus{}full\PYZus{}data}\PY{o}{.}\PY{n}{columns}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]} 
+         
+         \PY{c+c1}{\PYZsh{} Show the list of columns}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Feature columns:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{feature\PYZus{}cols}\PY{p}{)}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{Target column: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{target\PYZus{}col}\PY{p}{)}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} Separate the data into feature data and target data (X\PYZus{}all and y\PYZus{}all, respectively)}
+         \PY{n}{X\PYZus{}all} \PY{o}{=} \PY{n}{bank\PYZus{}full\PYZus{}data}\PY{p}{[}\PY{n}{feature\PYZus{}cols}\PY{p}{]}
+         \PY{n}{y\PYZus{}all} \PY{o}{=} \PY{n}{bank\PYZus{}full\PYZus{}data}\PY{p}{[}\PY{n}{target\PYZus{}col}\PY{p}{]}
+         
+         \PY{c+c1}{\PYZsh{} Show the feature information by printing the first five rows}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{Feature values:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{X\PYZus{}all}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Feature columns:
+['age', 'job\_admin.', 'job\_blue-collar', 'job\_entrepreneur', 'job\_housemaid', 'job\_management', 'job\_retired', 'job\_self-employed', 'job\_services', 'job\_student', 'job\_technician', 'job\_unemployed', 'job\_unknown', 'marital\_divorced', 'marital\_married', 'marital\_single', 'education\_primary', 'education\_secondary', 'education\_tertiary', 'education\_unknown', 'default', 'balance', 'housing', 'loan', 'contact\_cellular', 'contact\_telephone', 'contact\_unknown', 'day', 'month\_apr', 'month\_aug', 'month\_dec', 'month\_feb', 'month\_jan', 'month\_jul', 'month\_jun', 'month\_mar', 'month\_may', 'month\_nov', 'month\_oct', 'month\_sep', 'duration', 'campaign', 'pdays', 'previous', 'poutcome\_failure', 'poutcome\_other', 'poutcome\_success', 'poutcome\_unknown']
+
+Target column: y
+
+Feature values:
+   age  job\_admin.  job\_blue-collar  job\_entrepreneur  job\_housemaid  \textbackslash{}
+0   58           0                0                 0              0   
+1   44           0                0                 0              0   
+2   33           0                0                 1              0   
+3   47           0                1                 0              0   
+4   33           0                0                 0              0   
+
+   job\_management  job\_retired  job\_self-employed  job\_services  job\_student  \textbackslash{}
+0               1            0                  0             0            0   
+1               0            0                  0             0            0   
+2               0            0                  0             0            0   
+3               0            0                  0             0            0   
+4               0            0                  0             0            0   
+
+         {\ldots}         month\_oct  month\_sep  duration  campaign  pdays  \textbackslash{}
+0        {\ldots}                 0          0       261         1     -1   
+1        {\ldots}                 0          0       151         1     -1   
+2        {\ldots}                 0          0        76         1     -1   
+3        {\ldots}                 0          0        92         1     -1   
+4        {\ldots}                 0          0       198         1     -1   
+
+   previous  poutcome\_failure  poutcome\_other  poutcome\_success  \textbackslash{}
+0         0                 0               0                 0   
+1         0                 0               0                 0   
+2         0                 0               0                 0   
+3         0                 0               0                 0   
+4         0                 0               0                 0   
+
+   poutcome\_unknown  
+0                 1  
+1                 1  
+2                 1  
+3                 1  
+4                 1  
+
+[5 rows x 48 columns]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{X\PYZus{}all}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}16}]:}    age  job\_admin.  job\_blue-collar  job\_entrepreneur  job\_housemaid  \textbackslash{}
+         0   58           0                0                 0              0   
+         1   44           0                0                 0              0   
+         2   33           0                0                 1              0   
+         3   47           0                1                 0              0   
+         4   33           0                0                 0              0   
+         5   35           0                0                 0              0   
+         6   28           0                0                 0              0   
+         7   42           0                0                 1              0   
+         8   58           0                0                 0              0   
+         9   43           0                0                 0              0   
+         
+            job\_management  job\_retired  job\_self-employed  job\_services  job\_student  \textbackslash{}
+         0               1            0                  0             0            0   
+         1               0            0                  0             0            0   
+         2               0            0                  0             0            0   
+         3               0            0                  0             0            0   
+         4               0            0                  0             0            0   
+         5               1            0                  0             0            0   
+         6               1            0                  0             0            0   
+         7               0            0                  0             0            0   
+         8               0            1                  0             0            0   
+         9               0            0                  0             0            0   
+         
+                  {\ldots}         month\_oct  month\_sep  duration  campaign  pdays  \textbackslash{}
+         0        {\ldots}                 0          0       261         1     -1   
+         1        {\ldots}                 0          0       151         1     -1   
+         2        {\ldots}                 0          0        76         1     -1   
+         3        {\ldots}                 0          0        92         1     -1   
+         4        {\ldots}                 0          0       198         1     -1   
+         5        {\ldots}                 0          0       139         1     -1   
+         6        {\ldots}                 0          0       217         1     -1   
+         7        {\ldots}                 0          0       380         1     -1   
+         8        {\ldots}                 0          0        50         1     -1   
+         9        {\ldots}                 0          0        55         1     -1   
+         
+            previous  poutcome\_failure  poutcome\_other  poutcome\_success  \textbackslash{}
+         0         0                 0               0                 0   
+         1         0                 0               0                 0   
+         2         0                 0               0                 0   
+         3         0                 0               0                 0   
+         4         0                 0               0                 0   
+         5         0                 0               0                 0   
+         6         0                 0               0                 0   
+         7         0                 0               0                 0   
+         8         0                 0               0                 0   
+         9         0                 0               0                 0   
+         
+            poutcome\_unknown  
+         0                 1  
+         1                 1  
+         2                 1  
+         3                 1  
+         4                 1  
+         5                 1  
+         6                 1  
+         7                 1  
+         8                 1  
+         9                 1  
+         
+         [10 rows x 48 columns]
+\end{Verbatim}
+            
+    \paragraph{3.3. Training and Testing
+Datasets}\label{training-and-testing-datasets}
+
+Splitting data into training and testing datasets.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{c+c1}{\PYZsh{} Shuffle and split the dataset into the number of training and testing points above}
+         \PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{X\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}test} \PY{o}{=} \PY{n}{train\PYZus{}test\PYZus{}split}\PY{p}{(}\PY{n}{X\PYZus{}all}\PY{p}{,} \PY{n}{y\PYZus{}all}\PY{p}{,} \PY{n}{test\PYZus{}size}\PY{o}{=}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{n}{random\PYZus{}state}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{)}
+         
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Training set has }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{ samples with }\PY{l+s+si}{\PYZob{}:.2f\PYZcb{}}\PY{l+s+si}{\PYZpc{} o}\PY{l+s+s2}{f }\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{yes}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{ (subscribed) and }\PY{l+s+si}{\PYZob{}:.2f\PYZcb{}}\PY{l+s+si}{\PYZpc{} o}\PY{l+s+s2}{f }\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{no}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{ (not subscribed).}\PY{l+s+s2}{\PYZdq{}}
+               \PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{X\PYZus{}train}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+m+mi}{100} \PY{o}{*} \PY{n+nb}{len}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{[}\PY{n}{y\PYZus{}train} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{o}{/}\PY{n+nb}{len}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{)}\PY{p}{,} 
+                 \PY{l+m+mi}{100} \PY{o}{*} \PY{n+nb}{len}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{[}\PY{n}{y\PYZus{}train} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{o}{/}\PY{n+nb}{len}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+         
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Testing set has }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{ samples with }\PY{l+s+si}{\PYZob{}:.2f\PYZcb{}}\PY{l+s+si}{\PYZpc{} o}\PY{l+s+s2}{f }\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{yes}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{ (subscribed) and }\PY{l+s+si}{\PYZob{}:.2f\PYZcb{}}\PY{l+s+si}{\PYZpc{} o}\PY{l+s+s2}{f }\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{no}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{ (not subscribed).}\PY{l+s+s2}{\PYZdq{}}
+               \PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{X\PYZus{}test}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+m+mi}{100} \PY{o}{*} \PY{n+nb}{len}\PY{p}{(}\PY{n}{y\PYZus{}test}\PY{p}{[}\PY{n}{y\PYZus{}test} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{o}{/}\PY{n+nb}{len}\PY{p}{(}\PY{n}{y\PYZus{}test}\PY{p}{)}\PY{p}{,} 
+                 \PY{l+m+mi}{100} \PY{o}{*} \PY{n+nb}{len}\PY{p}{(}\PY{n}{y\PYZus{}test}\PY{p}{[}\PY{n}{y\PYZus{}test} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{o}{/}\PY{n+nb}{len}\PY{p}{(}\PY{n}{y\PYZus{}test}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Training set has 31647 samples with 11.79\% of 'yes' (subscribed) and 88.21\% of 'no' (not subscribed).
+Testing set has 13564 samples with 11.49\% of 'yes' (subscribed) and 88.51\% of 'no' (not subscribed).
+
+    \end{Verbatim}
+
+    \paragraph{3.4. Feature Scaling}\label{feature-scaling}
+
+Rescaling the features for them to have standard normal distribution
+with mean 0 and a standard deviation 1.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{n}{sc} \PY{o}{=} \PY{n}{StandardScaler}\PY{p}{(}\PY{p}{)}
+         \PY{n}{X\PYZus{}train} \PY{o}{=} \PY{n}{sc}\PY{o}{.}\PY{n}{fit\PYZus{}transform}\PY{p}{(}\PY{n}{X\PYZus{}train}\PY{p}{)}
+         \PY{n}{X\PYZus{}test} \PY{o}{=} \PY{n}{sc}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{X\PYZus{}test}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\subsubsection{4. Model Selection}\label{model-selection}
+
+In this section we will select some supervised classification algorithms
+in order to choose the best one to tune in the last section.
+
+    \paragraph{4.1. Selected Supervised Classification
+Algorithms}\label{selected-supervised-classification-algorithms}
+
+List of chosen algorithms: - Gaussian Naive Bayes (GaussianNB) -
+Decision Trees - Bagging (Ensemble Methods) - AdaBoost (Ensemble
+Methods) - Random Forest (Ensemble Methods) - Linear Discriminant
+Analysis (LDA) - K-Nearest Neighbors (KNeighbors) - Stochastic Gradient
+Descent (SGDC) - Support Vector Machines (SVM) - Logistic Regression
+(LR) - eXtreme Gradient Boosting (XGBoost)
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{n}{classifiers} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+         \PY{n}{classifiers}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{GaussianNB}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+         \PY{n}{classifiers}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{DecisionTreeClassifier}\PY{p}{(}\PY{n}{random\PYZus{}state}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+         \PY{n}{classifiers}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{BaggingClassifier}\PY{p}{(}\PY{n}{random\PYZus{}state}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+         \PY{n}{classifiers}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{AdaBoostClassifier}\PY{p}{(}\PY{n}{random\PYZus{}state}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+         \PY{n}{classifiers}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{RandomForestClassifier}\PY{p}{(}\PY{n}{random\PYZus{}state}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+         \PY{n}{classifiers}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{LinearDiscriminantAnalysis}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+         \PY{n}{classifiers}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{KNeighborsClassifier}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+         \PY{n}{classifiers}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{SGDClassifier}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+         \PY{n}{classifiers}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{SVC}\PY{p}{(}\PY{n}{random\PYZus{}state}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+         \PY{n}{classifiers}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{LogisticRegression}\PY{p}{(}\PY{n}{random\PYZus{}state}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+         \PY{n}{classifiers}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{XGBClassifier}\PY{p}{(}\PY{n}{random\PYZus{}state}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \paragraph{4.2. Training, Predicting and Scoring
+Functions}\label{training-predicting-and-scoring-functions}
+
+Defining functions to train models, predict labels and show metric
+results: accuracy, f1-score and roc auc.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{k}{def} \PY{n+nf}{train\PYZus{}classifier}\PY{p}{(}\PY{n}{clf}\PY{p}{,} \PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}\PY{p}{:}
+             \PY{l+s+sd}{\PYZsq{}\PYZsq{}\PYZsq{} Fits a classifier to the training data. \PYZsq{}\PYZsq{}\PYZsq{}}
+             \PY{c+c1}{\PYZsh{} Start the clock, train the classifier, then stop the clock}
+             \PY{n}{start} \PY{o}{=} \PY{n}{time}\PY{p}{(}\PY{p}{)}
+             \PY{n}{clf}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}
+             \PY{n}{end} \PY{o}{=} \PY{n}{time}\PY{p}{(}\PY{p}{)}    
+             \PY{c+c1}{\PYZsh{} Print the results}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Trained model in }\PY{l+s+si}{\PYZob{}:.4f\PYZcb{}}\PY{l+s+s2}{ seconds}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{end}\PY{o}{\PYZhy{}}\PY{n}{start}\PY{p}{)}\PY{p}{)}
+             
+         \PY{k}{def} \PY{n+nf}{predict\PYZus{}labels}\PY{p}{(}\PY{n}{clf}\PY{p}{,} \PY{n}{features}\PY{p}{,} \PY{n}{target}\PY{p}{)}\PY{p}{:}
+             \PY{l+s+sd}{\PYZsq{}\PYZsq{}\PYZsq{} Makes predictions using a fit classifier based on accuracy score. \PYZsq{}\PYZsq{}\PYZsq{}}    
+             \PY{c+c1}{\PYZsh{} Start the clock, make predictions, then stop the clock}
+             \PY{n}{start} \PY{o}{=} \PY{n}{time}\PY{p}{(}\PY{p}{)}
+             \PY{n}{y\PYZus{}pred} \PY{o}{=} \PY{n}{clf}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{features}\PY{p}{)}
+             \PY{n}{end} \PY{o}{=} \PY{n}{time}\PY{p}{(}\PY{p}{)}    
+             \PY{k}{return} \PY{n}{y\PYZus{}pred}
+         
+         \PY{k}{def} \PY{n+nf}{train\PYZus{}predict}\PY{p}{(}\PY{n}{clf}\PY{p}{,} \PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{X\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}test}\PY{p}{)}\PY{p}{:}
+             \PY{l+s+sd}{\PYZsq{}\PYZsq{}\PYZsq{} Train and predict using a classifier based on accuracy and F1\PYZhy{}score. \PYZsq{}\PYZsq{}\PYZsq{}}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{Training classifier }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{ using a training set size of }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{clf}\PY{o}{.}\PY{n+nv+vm}{\PYZus{}\PYZus{}class\PYZus{}\PYZus{}}\PY{o}{.}\PY{n+nv+vm}{\PYZus{}\PYZus{}name\PYZus{}\PYZus{}}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{X\PYZus{}train}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+             
+             \PY{c+c1}{\PYZsh{} Train the classifier}
+             \PY{n}{train\PYZus{}classifier}\PY{p}{(}\PY{n}{clf}\PY{p}{,} \PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}
+             
+             \PY{c+c1}{\PYZsh{} Predict labels for training and testing sets}
+             \PY{n}{y\PYZus{}pred\PYZus{}train} \PY{o}{=} \PY{n}{predict\PYZus{}labels}\PY{p}{(}\PY{n}{clf}\PY{p}{,} \PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}
+             \PY{n}{y\PYZus{}pred\PYZus{}test} \PY{o}{=} \PY{n}{predict\PYZus{}labels}\PY{p}{(}\PY{n}{clf}\PY{p}{,} \PY{n}{X\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}test}\PY{p}{)}
+             
+             \PY{c+c1}{\PYZsh{} Print the results of prediction for both training and testing}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Accuracy score for training set: }\PY{l+s+si}{\PYZob{}:.4f\PYZcb{}}\PY{l+s+s2}{.}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{accuracy\PYZus{}score}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}pred\PYZus{}train}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{F1 score for training set: }\PY{l+s+si}{\PYZob{}:.4f\PYZcb{}}\PY{l+s+s2}{.}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{f1\PYZus{}score}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}pred\PYZus{}train}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ROC AUC score for training set: }\PY{l+s+si}{\PYZob{}:.4f\PYZcb{}}\PY{l+s+s2}{.}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{roc\PYZus{}auc\PYZus{}score}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}pred\PYZus{}train}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+             
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Accuracy score for test set: }\PY{l+s+si}{\PYZob{}:.4f\PYZcb{}}\PY{l+s+s2}{.}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{accuracy\PYZus{}score}\PY{p}{(}\PY{n}{y\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}pred\PYZus{}test}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{F1 score for test set: }\PY{l+s+si}{\PYZob{}:.4f\PYZcb{}}\PY{l+s+s2}{.}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{f1\PYZus{}score}\PY{p}{(}\PY{n}{y\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}pred\PYZus{}test}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ROC AUC score for test set: }\PY{l+s+si}{\PYZob{}:.4f\PYZcb{}}\PY{l+s+s2}{.}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{roc\PYZus{}auc\PYZus{}score}\PY{p}{(}\PY{n}{y\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}pred\PYZus{}test}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \paragraph{4.3. Evaluation}\label{evaluation}
+
+Evaluating all classifiers.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{k}{for} \PY{n}{clf} \PY{o+ow}{in} \PY{n}{classifiers}\PY{p}{:}    
+             \PY{n}{train\PYZus{}predict}\PY{p}{(}\PY{n}{clf}\PY{p}{,} \PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{X\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}test}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+Training classifier GaussianNB using a training set size of 31647
+Trained model in 0.0302 seconds
+Accuracy score for training set: 0.8526.
+F1 score for training set: 0.4411.
+ROC AUC score for training set: 0.6970.
+Accuracy score for test set: 0.8548.
+F1 score for test set: 0.4439.
+ROC AUC score for test set: 0.7024.
+
+Training classifier DecisionTreeClassifier using a training set size of 31647
+Trained model in 0.3117 seconds
+Accuracy score for training set: 1.0000.
+F1 score for training set: 1.0000.
+ROC AUC score for training set: 1.0000.
+Accuracy score for test set: 0.8778.
+F1 score for test set: 0.4880.
+ROC AUC score for test set: 0.7165.
+
+Training classifier BaggingClassifier using a training set size of 31647
+Trained model in 1.9256 seconds
+Accuracy score for training set: 0.9924.
+F1 score for training set: 0.9669.
+ROC AUC score for training set: 0.9695.
+Accuracy score for test set: 0.9047.
+F1 score for test set: 0.5063.
+ROC AUC score for test set: 0.6962.
+
+Training classifier AdaBoostClassifier using a training set size of 31647
+Trained model in 1.5972 seconds
+Accuracy score for training set: 0.8999.
+F1 score for training set: 0.4666.
+ROC AUC score for training set: 0.6709.
+Accuracy score for test set: 0.9016.
+F1 score for test set: 0.4628.
+ROC AUC score for test set: 0.6699.
+
+Training classifier RandomForestClassifier using a training set size of 31647
+Trained model in 0.3463 seconds
+Accuracy score for training set: 0.9928.
+F1 score for training set: 0.9684.
+ROC AUC score for training set: 0.9706.
+Accuracy score for test set: 0.9019.
+F1 score for test set: 0.4435.
+ROC AUC score for test set: 0.6575.
+
+Training classifier LinearDiscriminantAnalysis using a training set size of 31647
+Trained model in 0.5170 seconds
+Accuracy score for training set: 0.9004.
+F1 score for training set: 0.5077.
+ROC AUC score for training set: 0.6991.
+Accuracy score for test set: 0.9019.
+F1 score for test set: 0.5119.
+ROC AUC score for test set: 0.7044.
+
+Training classifier KNeighborsClassifier using a training set size of 31647
+Trained model in 0.6221 seconds
+Accuracy score for training set: 0.9172.
+F1 score for training set: 0.5546.
+ROC AUC score for training set: 0.7094.
+Accuracy score for test set: 0.8955.
+F1 score for test set: 0.4131.
+ROC AUC score for test set: 0.6452.
+
+Training classifier SGDClassifier using a training set size of 31647
+Trained model in 0.0391 seconds
+Accuracy score for training set: 0.8704.
+F1 score for training set: 0.4483.
+ROC AUC score for training set: 0.6868.
+Accuracy score for test set: 0.8677.
+F1 score for test set: 0.4252.
+ROC AUC score for test set: 0.6756.
+
+Training classifier SVC using a training set size of 31647
+Trained model in 31.3536 seconds
+Accuracy score for training set: 0.9189.
+F1 score for training set: 0.5506.
+ROC AUC score for training set: 0.7035.
+Accuracy score for test set: 0.9041.
+F1 score for test set: 0.4380.
+ROC AUC score for test set: 0.6523.
+
+Training classifier LogisticRegression using a training set size of 31647
+Trained model in 0.2901 seconds
+Accuracy score for training set: 0.9010.
+F1 score for training set: 0.4521.
+ROC AUC score for training set: 0.6607.
+Accuracy score for test set: 0.9035.
+F1 score for test set: 0.4580.
+ROC AUC score for test set: 0.6648.
+
+Training classifier XGBClassifier using a training set size of 31647
+Trained model in 2.8624 seconds
+Accuracy score for training set: 0.9085.
+F1 score for training set: 0.5046.
+ROC AUC score for training set: 0.6862.
+Accuracy score for test set: 0.9082.
+F1 score for test set: 0.4916.
+ROC AUC score for test set: 0.6812.
+
+    \end{Verbatim}
+
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\subsubsection{5. Model Tuning}\label{model-tuning}
+
+    \paragraph{5.1. Cross Validation}\label{cross-validation}
+
+Creating random data splits for training and testing sets.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{n}{cv\PYZus{}sets} \PY{o}{=} \PY{n}{ShuffleSplit}\PY{p}{(}\PY{n}{test\PYZus{}size}\PY{o}{=}\PY{l+m+mf}{0.20}\PY{p}{,} \PY{n}{random\PYZus{}state}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+         \PY{n}{cv\PYZus{}sets}\PY{o}{.}\PY{n}{get\PYZus{}n\PYZus{}splits}\PY{p}{(}\PY{n}{X\PYZus{}train}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{cv\PYZus{}sets}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+ShuffleSplit(n\_splits=10, random\_state=1, test\_size=0.2, train\_size=None)
+
+    \end{Verbatim}
+
+    \paragraph{5.2. Scoring for Grid Search Cross
+Validation}\label{scoring-for-grid-search-cross-validation}
+
+Creating multiple metric evaluation: Accuracy, F1-Score and ROC AUC.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{n}{scoring} \PY{o}{=} \PY{p}{\PYZob{}}
+             \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Accuracy}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{accuracy}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
+             \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{F1\PYZhy{}Score}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{f1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+             \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{AUC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{roc\PYZus{}auc}\PY{l+s+s1}{\PYZsq{}}
+         \PY{p}{\PYZcb{}}
+\end{Verbatim}
+
+
+    \paragraph{5.3. Default XGBoost}\label{default-xgboost}
+
+Creating XGBoost instance for tuning.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}35}]:} \PY{n}{model\PYZus{}v0} \PY{o}{=} \PY{n}{XGBClassifier}\PY{p}{(}
+             \PY{n}{random\PYZus{}state}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+         \PY{n}{train\PYZus{}predict}\PY{p}{(}\PY{n}{model\PYZus{}v0}\PY{p}{,} \PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{X\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}test}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+Training classifier XGBClassifier using a training set size of 31647
+Trained model in 3.0614 seconds
+Accuracy score for training set: 0.9085.
+F1 score for training set: 0.5046.
+ROC AUC score for training set: 0.6862.
+Accuracy score for test set: 0.9082.
+F1 score for test set: 0.4916.
+ROC AUC score for test set: 0.6812.
+
+    \end{Verbatim}
+
+    \paragraph{5.3. First tune:
+scale\_post\_weight}\label{first-tune-scale_post_weight}
+
+Controlling the balance of positive and negative weights for unbalanced
+classes.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}34}]:} \PY{n}{params} \PY{o}{=} \PY{p}{\PYZob{}}
+             \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{scale\PYZus{}pos\PYZus{}weight}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{p}{[}\PY{n}{x} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{11}\PY{p}{)}\PY{p}{]}
+         \PY{p}{\PYZcb{}}
+         \PY{n}{gs} \PY{o}{=} \PY{n}{GridSearchCV}\PY{p}{(}
+             \PY{n}{estimator}\PY{o}{=}\PY{n}{model\PYZus{}v0}\PY{p}{,} 
+             \PY{n}{param\PYZus{}grid}\PY{o}{=}\PY{n}{params}\PY{p}{,} 
+             \PY{n}{scoring}\PY{o}{=}\PY{n}{scoring}\PY{p}{,} 
+             \PY{n}{cv}\PY{o}{=}\PY{n}{cv\PYZus{}sets}\PY{p}{,} 
+             \PY{n}{refit}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Accuracy}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{gs}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}34}]:} GridSearchCV(cv=ShuffleSplit(n\_splits=10, random\_state=1, test\_size=0.2, train\_size=None),
+                error\_score='raise',
+                estimator=XGBClassifier(base\_score=0.5, booster='gbtree', colsample\_bylevel=1,
+                colsample\_bytree=1, gamma=0, learning\_rate=0.1, max\_delta\_step=0,
+                max\_depth=3, min\_child\_weight=1, missing=None, n\_estimators=100,
+                n\_jobs=1, nthread=None, objective='binary:logistic', random\_state=1,
+                reg\_alpha=0, reg\_lambda=1, scale\_pos\_weight=1, seed=None,
+                silent=True, subsample=1),
+                fit\_params=None, iid=True, n\_jobs=1,
+                param\_grid=\{'scale\_pos\_weight': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\},
+                pre\_dispatch='2*n\_jobs', refit='Accuracy',
+                return\_train\_score='warn',
+                scoring=\{'Accuracy': 'accuracy', 'F1-Score': 'f1', 'AUC': 'roc\_auc'\},
+                verbose=0)
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}36}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The best parameters and values found were: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{, best score: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{gs}\PY{o}{.}\PY{n}{best\PYZus{}params\PYZus{}}\PY{p}{,} \PY{n}{gs}\PY{o}{.}\PY{n}{best\PYZus{}score\PYZus{}}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+The best parameters and values found were: \{'scale\_pos\_weight': 1\}, best score: 0.9045971563981042
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{model\PYZus{}v1} \PY{o}{=} \PY{n}{XGBClassifier}\PY{p}{(}
+            \PY{n}{random\PYZus{}state}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+        \PY{n}{train\PYZus{}predict}\PY{p}{(}\PY{n}{model\PYZus{}v1}\PY{p}{,} \PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{X\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}test}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{n}{params} \PY{o}{=} \PY{p}{\PYZob{}}
+             \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{objective}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{reg:linear}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{binary:logistic}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{p}{\PYZcb{}}
+         \PY{n}{gs} \PY{o}{=} \PY{n}{GridSearchCV}\PY{p}{(}
+             \PY{n}{estimator}\PY{o}{=}\PY{n}{model}\PY{p}{,} 
+             \PY{n}{param\PYZus{}grid}\PY{o}{=}\PY{n}{params}\PY{p}{,} 
+             \PY{n}{scoring}\PY{o}{=}\PY{n}{scoring}\PY{p}{,} 
+             \PY{n}{cv}\PY{o}{=}\PY{n}{cv\PYZus{}sets}\PY{p}{,} 
+             \PY{n}{refit}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Accuracy}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{gs}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}25}]:} GridSearchCV(cv=10, error\_score='raise',
+                estimator=XGBClassifier(base\_score=0.5, booster='gbtree', colsample\_bylevel=1,
+                colsample\_bytree=1, gamma=0, learning\_rate=0.1, max\_delta\_step=0,
+                max\_depth=3, min\_child\_weight=1, missing=None, n\_estimators=100,
+                n\_jobs=1, nthread=None, objective='binary:logistic', random\_state=1,
+                reg\_alpha=0, reg\_lambda=1, scale\_pos\_weight=1, seed=None,
+                silent=True, subsample=1),
+                fit\_params=None, iid=True, n\_jobs=1,
+                param\_grid=\{'objective': ['reg:linear', 'binary:logistic']\},
+                pre\_dispatch='2*n\_jobs', refit='Accuracy',
+                return\_train\_score='warn',
+                scoring=\{'Accuracy': 'accuracy', 'F1-Score': 'f1', 'AUC': 'roc\_auc'\},
+                verbose=0)
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The best parameters and values found were: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{, best score: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{gs}\PY{o}{.}\PY{n}{best\PYZus{}params\PYZus{}}\PY{p}{,} \PY{n}{gs}\PY{o}{.}\PY{n}{best\PYZus{}score\PYZus{}}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+The best parameters and values found were: \{'objective': 'binary:logistic'\}, best score: 0.904098334755269
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}29}]:} \PY{n}{model} \PY{o}{=} \PY{n}{XGBClassifier}\PY{p}{(}
+             \PY{n}{random\PYZus{}state}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,}
+             \PY{n}{scale\PYZus{}pos\PYZus{}weight}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,}
+             \PY{n}{objective}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{binary:logistic}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{train\PYZus{}predict}\PY{p}{(}\PY{n}{model}\PY{p}{,} \PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{X\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}test}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+Training classifier XGBClassifier using a training set size of 31647
+Trained model in 4.8335 seconds
+Accuracy score for training set: 0.9085.
+F1 score for training set: 0.5046.
+ROC AUC score for training set: 0.6862.
+Accuracy score for test set: 0.9082.
+F1 score for test set: 0.4916.
+ROC AUC score for test set: 0.6812.
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}30}]:} \PY{n}{params} \PY{o}{=} \PY{p}{\PYZob{}}
+             \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{max\PYZus{}depth}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{p}{[}\PY{n}{x} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{)}\PY{p}{]}\PY{p}{,}
+             \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{min\PYZus{}child\PYZus{}weight}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{p}{[}\PY{n}{x} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{)}\PY{p}{]}
+         \PY{p}{\PYZcb{}}
+         \PY{n}{gs} \PY{o}{=} \PY{n}{GridSearchCV}\PY{p}{(}
+             \PY{n}{estimator}\PY{o}{=}\PY{n}{model}\PY{p}{,} 
+             \PY{n}{param\PYZus{}grid}\PY{o}{=}\PY{n}{params}\PY{p}{,} 
+             \PY{n}{scoring}\PY{o}{=}\PY{n}{scoring}\PY{p}{,} 
+             \PY{n}{cv}\PY{o}{=}\PY{n}{cv\PYZus{}sets}\PY{p}{,} 
+             \PY{n}{refit}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Accuracy}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{gs}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}30}]:} GridSearchCV(cv=10, error\_score='raise',
+                estimator=XGBClassifier(base\_score=0.5, booster='gbtree', colsample\_bylevel=1,
+                colsample\_bytree=1, gamma=0, learning\_rate=0.1, max\_delta\_step=0,
+                max\_depth=3, min\_child\_weight=1, missing=None, n\_estimators=100,
+                n\_jobs=1, nthread=None, objective='binary:logistic', random\_state=1,
+                reg\_alpha=0, reg\_lambda=1, scale\_pos\_weight=1, seed=None,
+                silent=True, subsample=1),
+                fit\_params=None, iid=True, n\_jobs=1,
+                param\_grid=\{'max\_depth': [3, 4, 5, 6, 7, 8], 'min\_child\_weight': [1, 2, 3, 4, 5, 6]\},
+                pre\_dispatch='2*n\_jobs', refit='Accuracy',
+                return\_train\_score='warn',
+                scoring=\{'Accuracy': 'accuracy', 'F1-Score': 'f1', 'AUC': 'roc\_auc'\},
+                verbose=0)
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} feature importance}
+        \PY{c+c1}{\PYZsh{} feat\PYZus{}imp = pd.Series(model.booster().get\PYZus{}fscore()).sort\PYZus{}values(ascending=False)}
+        \PY{c+c1}{\PYZsh{} feat\PYZus{}imp.plot(kind=\PYZsq{}bar\PYZsq{}, title=\PYZsq{}Feature Importances\PYZsq{})}
+        \PY{c+c1}{\PYZsh{}plt.ylabel(\PYZsq{}Feature Importance Score\PYZsq{})}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}31}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The best parameters and values found were: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{, best score: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{gs}\PY{o}{.}\PY{n}{best\PYZus{}params\PYZus{}}\PY{p}{,} \PY{n}{gs}\PY{o}{.}\PY{n}{best\PYZus{}score\PYZus{}}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+The best parameters and values found were: \{'max\_depth': 6, 'min\_child\_weight': 1\}, best score: 0.9064682276361109
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}34}]:} \PY{n}{model} \PY{o}{=} \PY{n}{XGBClassifier}\PY{p}{(}
+             \PY{n}{random\PYZus{}state}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,}
+             \PY{n}{scale\PYZus{}pos\PYZus{}weight}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,}
+             \PY{n}{objective}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{binary:logistic}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
+             \PY{n}{max\PYZus{}depth}\PY{o}{=}\PY{l+m+mi}{6}\PY{p}{,} 
+             \PY{n}{min\PYZus{}child\PYZus{}weight}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{)}
+         \PY{n}{train\PYZus{}predict}\PY{p}{(}\PY{n}{model}\PY{p}{,} \PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{X\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}test}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+Training classifier XGBClassifier using a training set size of 31647
+Trained model in 9.3249 seconds
+Accuracy score for training set: 0.9286.
+F1 score for training set: 0.6463.
+ROC AUC score for training set: 0.7660.
+Accuracy score for test set: 0.9115.
+F1 score for test set: 0.5492.
+ROC AUC score for test set: 0.7191.
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{params} \PY{o}{=} \PY{p}{\PYZob{}}
+            \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{subsample}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}\PY{p}{[}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{l+m+mf}{0.6}\PY{p}{,} \PY{l+m+mf}{0.7}\PY{p}{,} \PY{l+m+mf}{0.8}\PY{p}{,} \PY{l+m+mf}{0.9}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{]}\PY{p}{,}
+            \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{colsample\PYZus{}bytree}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}\PY{p}{[}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{l+m+mf}{0.6}\PY{p}{,} \PY{l+m+mf}{0.7}\PY{p}{,} \PY{l+m+mf}{0.8}\PY{p}{,} \PY{l+m+mf}{0.9}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{]}
+        \PY{p}{\PYZcb{}}
+        \PY{n}{gs} \PY{o}{=} \PY{n}{GridSearchCV}\PY{p}{(}
+            \PY{n}{estimator}\PY{o}{=}\PY{n}{model}\PY{p}{,} 
+            \PY{n}{param\PYZus{}grid}\PY{o}{=}\PY{n}{params}\PY{p}{,} 
+            \PY{n}{scoring}\PY{o}{=}\PY{n}{scoring}\PY{p}{,} 
+            \PY{n}{cv}\PY{o}{=}\PY{n}{cv\PYZus{}sets}\PY{p}{,} 
+            \PY{n}{refit}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Accuracy}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{gs}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The best parameters and values found were: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{, best score: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{gs}\PY{o}{.}\PY{n}{best\PYZus{}params\PYZus{}}\PY{p}{,} \PY{n}{gs}\PY{o}{.}\PY{n}{best\PYZus{}score\PYZus{}}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{model} \PY{o}{=} \PY{n}{XGBClassifier}\PY{p}{(}
+            \PY{n}{random\PYZus{}state}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,}
+            \PY{n}{scale\PYZus{}pos\PYZus{}weight}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,}
+            \PY{n}{objective}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{binary:logistic}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
+            \PY{n}{max\PYZus{}depth}\PY{o}{=}\PY{l+m+mi}{6}\PY{p}{,} 
+            \PY{n}{min\PYZus{}child\PYZus{}weight}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{,} 
+            \PY{n}{subsample}\PY{o}{=}\PY{l+m+mf}{1.0}\PY{p}{,} 
+            \PY{n}{colsample\PYZus{}bytree}\PY{o}{=}\PY{l+m+mf}{1.0}\PY{p}{)}
+        \PY{n}{train\PYZus{}predict}\PY{p}{(}\PY{n}{model}\PY{p}{,} \PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{X\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}test}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{params} \PY{o}{=} \PY{p}{\PYZob{}}
+            \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{reg\PYZus{}alpha}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}\PY{p}{[}\PY{n}{x} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{]}\PY{p}{,}
+            \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{reg\PYZus{}lambda}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}\PY{p}{[}\PY{n}{x} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{)}\PY{p}{]}
+        \PY{p}{\PYZcb{}}
+        \PY{n}{gs} \PY{o}{=} \PY{n}{GridSearchCV}\PY{p}{(}
+            \PY{n}{estimator}\PY{o}{=}\PY{n}{model}\PY{p}{,} 
+            \PY{n}{param\PYZus{}grid}\PY{o}{=}\PY{n}{params}\PY{p}{,} 
+            \PY{n}{scoring}\PY{o}{=}\PY{n}{scoring}\PY{p}{,} 
+            \PY{n}{cv}\PY{o}{=}\PY{n}{cv\PYZus{}sets}\PY{p}{,}
+            \PY{n}{refit}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Accuracy}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{gs}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The best parameters and values found were: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{, best score: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{gs}\PY{o}{.}\PY{n}{best\PYZus{}params\PYZus{}}\PY{p}{,} \PY{n}{gs}\PY{o}{.}\PY{n}{best\PYZus{}score\PYZus{}}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{model} \PY{o}{=} \PY{n}{XGBClassifier}\PY{p}{(}
+            \PY{n}{random\PYZus{}state}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,}
+            \PY{n}{scale\PYZus{}pos\PYZus{}weight}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,}
+            \PY{n}{objective}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{binary:logistic}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
+            \PY{n}{max\PYZus{}depth}\PY{o}{=}\PY{l+m+mi}{6}\PY{p}{,} 
+            \PY{n}{min\PYZus{}child\PYZus{}weight}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{,} 
+            \PY{n}{subsample}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} 
+            \PY{n}{colsample\PYZus{}bytree}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,}
+            \PY{n}{reg\PYZus{}alpha}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,}
+            \PY{n}{reg\PYZus{}lambda}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+        \PY{n}{train\PYZus{}predict}\PY{p}{(}\PY{n}{model}\PY{p}{,} \PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{X\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}test}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{params} \PY{o}{=} \PY{p}{\PYZob{}}
+            \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{gamma}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}\PY{p}{[}\PY{n}{x} \PY{o}{*} \PY{l+m+mf}{0.1} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{)}\PY{p}{]}
+        \PY{p}{\PYZcb{}}
+        \PY{n}{gs} \PY{o}{=} \PY{n}{GridSearchCV}\PY{p}{(}
+            \PY{n}{estimator}\PY{o}{=}\PY{n}{model}\PY{p}{,} 
+            \PY{n}{param\PYZus{}grid}\PY{o}{=}\PY{n}{params}\PY{p}{,} 
+            \PY{n}{scoring}\PY{o}{=}\PY{n}{scoring}\PY{p}{,} 
+            \PY{n}{cv}\PY{o}{=}\PY{n}{cv\PYZus{}sets}\PY{p}{,} 
+            \PY{n}{refit}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Accuracy}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{gs}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The best parameters and values found were: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{, best score: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{gs}\PY{o}{.}\PY{n}{best\PYZus{}params\PYZus{}}\PY{p}{,} \PY{n}{gs}\PY{o}{.}\PY{n}{best\PYZus{}score\PYZus{}}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{model} \PY{o}{=} \PY{n}{XGBClassifier}\PY{p}{(}
+            \PY{n}{random\PYZus{}state}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,}
+            \PY{n}{scale\PYZus{}pos\PYZus{}weight}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,}
+            \PY{n}{objective}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{binary:logistic}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
+            \PY{n}{max\PYZus{}depth}\PY{o}{=}\PY{l+m+mi}{6}\PY{p}{,} 
+            \PY{n}{min\PYZus{}child\PYZus{}weight}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{,} 
+            \PY{n}{subsample}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} 
+            \PY{n}{colsample\PYZus{}bytree}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,}
+            \PY{n}{reg\PYZus{}alpha}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,}
+            \PY{n}{reg\PYZus{}lambda}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,}
+            \PY{n}{gamma}\PY{o}{=}\PY{l+m+mf}{0.7}\PY{p}{)}
+        \PY{n}{train\PYZus{}predict}\PY{p}{(}\PY{n}{model}\PY{p}{,} \PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{X\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}test}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\subsubsection{6. Final Evaluation}\label{final-evaluation}
+
+    \paragraph{6.1. Model Benchmark}\label{model-benchmark}
+
+Creating a Dummy Classifier which Predicts the Majority Class and
+XGBoost untuned model
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{dummy\PYZus{}clf} \PY{o}{=} \PY{n}{DummyClassifier}\PY{p}{(}\PY{n}{strategy}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{most\PYZus{}frequent}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{random\PYZus{}state}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+        \PY{n}{train\PYZus{}predict}\PY{p}{(}\PY{n}{dummy\PYZus{}clf}\PY{p}{,} \PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{X\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}test}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{xgb\PYZus{}untuned\PYZus{}model} \PY{o}{=} \PY{n}{XGBClassifier}\PY{p}{(}\PY{n}{random\PYZus{}state}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+        \PY{n}{train\PYZus{}predict}\PY{p}{(}\PY{n}{xgb\PYZus{}untuned\PYZus{}model}\PY{p}{,} \PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{X\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}test}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{final\PYZus{}xgb\PYZus{}tuned\PYZus{}model} \PY{o}{=} \PY{n}{XGBClassifier}\PY{p}{(}
+            \PY{n}{random\PYZus{}state}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} 
+            \PY{n}{scale\PYZus{}pos\PYZus{}weight}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,}
+            \PY{n}{objective}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{binary:logistic}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
+            \PY{n}{max\PYZus{}depth}\PY{o}{=}\PY{l+m+mi}{6}\PY{p}{,} 
+            \PY{n}{min\PYZus{}child\PYZus{}weight}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{,} 
+            \PY{n}{subsample}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} 
+            \PY{n}{colsample\PYZus{}bytree}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,}
+            \PY{n}{reg\PYZus{}alpha}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,}
+            \PY{n}{reg\PYZus{}lambda}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,}
+            \PY{n}{gamma}\PY{o}{=}\PY{l+m+mf}{0.7}\PY{p}{)}
+        \PY{n}{train\PYZus{}predict}\PY{p}{(}\PY{n}{final\PYZus{}xgb\PYZus{}tuned\PYZus{}model}\PY{p}{,} \PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{X\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}test}\PY{p}{)}
+\end{Verbatim}
+
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
