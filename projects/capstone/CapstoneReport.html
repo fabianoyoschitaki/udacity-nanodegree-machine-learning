@@ -11805,13 +11805,13 @@ August 25th, 2018</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Metrics">Metrics<a class="anchor-link" href="#Metrics">&#182;</a></h3><p>The evaluation metrics that will be considered in this project are: Accuracy and F1-Score. Acuracy is an appropriate metric for supervised classification problems, considering both correct and incorrect classifications in its formula:</p>
-<p><img src="images/accuracy.png" alt="Accuracy"></p>
-<p>F1-Score metric, also known as balanced F-score or F-measure, is a metric which can be interpreted as the harmonic average of  both precision and recall metrics. This metric was considered due to the class imbalance that our dataset presents (approximately 88% 'no' vs 12% 'yes).</p>
-<p><img src="images/f1score.png" alt="F1-Score"></p>
-<p>Precision is the number of TP divided by the number of TP plus the number of FP and recall is the number of TP divided by the number of TP plus the number of FN.</p>
-<p><img src="images/precision_recall.png" alt="Precision and Recall"></p>
-<p>Where:</p>
+<h3 id="Metrics">Metrics<a class="anchor-link" href="#Metrics">&#182;</a></h3><p>The evaluation metrics that will be considered in this project are: Accuracy and F1-Score. Acuracy is an appropriate metric for supervised classification problems, considering both correct and incorrect classifications in its formula (Figure 1):</p>
+<p><img alt="Accuracy" src="images/accuracy.png" width="450px"/></p>
+<h4 align="center">Figure 1.1 - Accuracy formula</h4><p>F1-Score metric, also known as balanced F-score or F-measure, is a metric which can be interpreted as the harmonic average of  both precision and recall metrics (Figure 2). This metric was considered due to the class imbalance that our dataset presents (approximately 88% 'no' vs 12% 'yes).</p>
+<p><img alt="F1-Score" src="images/f1score.png" width="480px"/></p>
+<h4 align="center">Figure 1.2 - F1-score formula</h4><p>Precision is the number of TP divided by the number of TP plus the number of FP and recall is the number of TP divided by the number of TP plus the number of FN (Figure 3).</p>
+<p><img alt="Precision and Recall" src="images/precision_recall.png" width="480px"/></p>
+<h4 align="center">Figure 1.3 - Precision and Recall</h4><p>Where:</p>
 <ul>
 <li><strong>TP</strong>: True Positive, in our case a person who subscribed a term deposit and is correctly classified.</li>
 <li><strong>TN</strong>: True Negative, in our case a person who didn't subscribe a term deposit and is correctly classified.</li>
@@ -11865,9 +11865,9 @@ The description of the columns follow:</p>
 </ul>
 </li>
 </ul>
-<p>Displaying the first 10 rows of the dataset below:</p>
-<p><img src="images/first10row.png" alt="First 10 rows of the dataset"></p>
-
+<p>Displaying the first ten rows of the dataset below (Figure 4):</p>
+<p><img alt="First 10 rows of the dataset" src="images/first10row.png"/></p>
+<h4 align="center">Figure 2 - Ten first rows of the dataset</h4>
 </div>
 </div>
 </div>
@@ -11876,8 +11876,8 @@ The description of the columns follow:</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Exploratory-Visualization">Exploratory Visualization<a class="anchor-link" href="#Exploratory-Visualization">&#182;</a></h3><p>The Figure 1 shows the imbalance of the target classes 'yes - subscribed' and 'no - didn't subscribed' in our dataset.</p>
-<p><img src="images/distribution_yes_no.png" alt="Imbalanced Distribution"></p>
-<h4 align="center">Figure 1 - Clients who subscribed to a term deposit vs clients who didn't subscribe</h4>
+<p><img alt="Imbalanced Distribution" src="images/distribution_yes_no.png" width="400px"/></p>
+<h4 align="center">Figure 3 - Clients who subscribed to a term deposit vs clients who didn't subscribe</h4>
 </div>
 </div>
 </div>
@@ -11885,8 +11885,8 @@ The description of the columns follow:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="images/distribution_by_age.png" alt="Distribution by Age"></p>
-<h4 align="center">Figure 2 - Clients age distribution</h4>
+<p><img alt="Distribution by Age" src="images/distribution_by_age.png" width="600px"/></p>
+<h4 align="center">Figure 4.1 - Clients age distribution</h4>
 </div>
 </div>
 </div>
@@ -11894,8 +11894,8 @@ The description of the columns follow:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="images/distribution_by_age_comparison.png" alt="Distribution by Age"></p>
-<h4 align="center">Figure 3 - Clients age distribution</h4>
+<p><img alt="Distribution by Age" src="images/distribution_by_age_comparison.png"/></p>
+<h4 align="center">Figure 4.2 - Clients age distribution</h4>
 </div>
 </div>
 </div>
@@ -11903,8 +11903,8 @@ The description of the columns follow:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="images/distribution_by_job.png" alt="Distribution by Age"></p>
-<h4 align="center">Figure 4 - Clients age distribution</h4>
+<p><img alt="Distribution by Job" src="images/distribution_by_job.png"/></p>
+<h4 align="center">Figure 5.1 - Clients job distribution</h4>
 </div>
 </div>
 </div>
@@ -11912,8 +11912,8 @@ The description of the columns follow:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="images/distribution_by_job_comparison.png" alt="Distribution by Age"></p>
-<h4 align="center">Figure 5 - Clients age distribution</h4>
+<p><img alt="Distribution by Job" src="images/distribution_by_job_comparison.png"/></p>
+<h4 align="center">Figure 5.2 - Clients job distribution</h4>
 </div>
 </div>
 </div>
@@ -11921,8 +11921,8 @@ The description of the columns follow:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="images/distribution_by_marital.png" alt="Distribution by Age"></p>
-<h4 align="center">Figure 6 - Clients age distribution</h4>
+<p><img alt="Distribution by Job" src="images/distribution_by_marital.png"/></p>
+<h4 align="center">Figure 6.1 - Clients marital status distribution</h4>
 </div>
 </div>
 </div>
@@ -11930,8 +11930,8 @@ The description of the columns follow:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="images/distribution_by_marital_comparison.png" alt="Distribution by Age"></p>
-<h4 align="center">Figure 7 - Clients age distribution</h4>
+<p><img alt="Distribution by Job" src="images/distribution_by_marital_comparison.png"/></p>
+<h4 align="center">Figure 6.2 - Clients marital status distribution</h4>
 </div>
 </div>
 </div>
@@ -11939,8 +11939,8 @@ The description of the columns follow:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="images/distribution_by_education.png" alt="Distribution by Age"></p>
-<h4 align="center">Figure 8 - Clients age distribution</h4>
+<p><img alt="Distribution by Education" src="images/distribution_by_education.png"/></p>
+<h4 align="center">Figure 7.1 - Clients education distribution</h4>
 </div>
 </div>
 </div>
@@ -11948,8 +11948,8 @@ The description of the columns follow:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="images/distribution_by_education_comparison.png" alt="Distribution by Age"></p>
-<h4 align="center">Figure 9 - Clients age distribution</h4>
+<p><img alt="Distribution by Education" src="images/distribution_by_education_comparison.png"/></p>
+<h4 align="center">Figure 7.2 - Clients education distribution</h4>
 </div>
 </div>
 </div>
@@ -11957,8 +11957,8 @@ The description of the columns follow:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="images/distribution_by_default.png" alt="Distribution by Age"></p>
-<h4 align="center">Figure 10 - Clients age distribution</h4>
+<p><img alt="Distribution by Default" src="images/distribution_by_default.png"/></p>
+<h4 align="center">Figure 8.1 - Clients have credit in default distribution</h4>
 </div>
 </div>
 </div>
@@ -11966,8 +11966,8 @@ The description of the columns follow:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="images/distribution_by_default_comparison.png" alt="Distribution by Age"></p>
-<h4 align="center">Figure 11 - Clients age distribution</h4>
+<p><img alt="Distribution by Default" src="images/distribution_by_default_comparison.png"/></p>
+<h4 align="center">Figure 8.2 - Clients have credit in default distribution</h4>
 </div>
 </div>
 </div>
@@ -11975,8 +11975,8 @@ The description of the columns follow:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="images/distribution_by_housing.png" alt="Distribution by Age"></p>
-<h4 align="center">Figure 12 - Clients age distribution</h4>
+<p><img alt="Distribution by Housing" src="images/distribution_by_housing.png"/></p>
+<h4 align="center">Figure 9.1 - Clients have housing loan distribution</h4>
 </div>
 </div>
 </div>
@@ -11984,8 +11984,8 @@ The description of the columns follow:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="images/distribution_by_housing_comparison.png" alt="Distribution by Age"></p>
-<h4 align="center">Figure 13 - Clients age distribution</h4>
+<p><img alt="Distribution by Housing" src="images/distribution_by_housing_comparison.png"/></p>
+<h4 align="center">Figure 9.2 - Clients have housing loan distribution</h4>
 </div>
 </div>
 </div>
@@ -11993,8 +11993,8 @@ The description of the columns follow:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="images/distribution_by_personal.png" alt="Distribution by Age"></p>
-<h4 align="center">Figure 14 - Clients age distribution</h4>
+<p><img alt="Distribution by Personal" src="images/distribution_by_personal.png"/></p>
+<h4 align="center">Figure 10.1 - Clients have personal loan distribution</h4>
 </div>
 </div>
 </div>
@@ -12002,8 +12002,8 @@ The description of the columns follow:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="images/distribution_by_personal_comparison.png" alt="Distribution by Age"></p>
-<h4 align="center">Figure 15 - Clients age distribution</h4>
+<p><img alt="Distribution by Personal" src="images/distribution_by_personal_comparison.png"/></p>
+<h4 align="center">Figure 10.2 - Clients have personal loan distribution</h4>
 </div>
 </div>
 </div>
@@ -12011,8 +12011,8 @@ The description of the columns follow:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="images/distribution_by_month.png" alt="Distribution by Age"></p>
-<h4 align="center">Figure 16 - Clients age distribution</h4>
+<p><img alt="Distribution by Month" src="images/distribution_by_month.png"/></p>
+<h4 align="center">Figure 11.1 - Month of last contact distribution</h4>
 </div>
 </div>
 </div>
@@ -12020,8 +12020,8 @@ The description of the columns follow:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="images/distribution_by_month_comparison.png" alt="Distribution by Age"></p>
-<h4 align="center">Figure 17 - Clients age distribution</h4>
+<p><img alt="Distribution by Month" src="images/distribution_by_month_comparison.png"/></p>
+<h4 align="center">Figure 11.2 - Month of last contact distribution</h4>
 </div>
 </div>
 </div>
@@ -12029,8 +12029,8 @@ The description of the columns follow:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="images/correlation_matrix.png" alt="Distribution by Age"></p>
-<h4 align="center">Figure 18 - Clients age distribution</h4>
+<p><img alt="Correlation Matrix" src="images/correlation_matrix.png"/></p>
+<h4 align="center">Figure 12 - Correlation Matrix</h4>
 </div>
 </div>
 </div>
@@ -12038,8 +12038,8 @@ The description of the columns follow:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="images/scatter_matrix.png" alt="Distribution by Age"></p>
-<h4 align="center">Figure 19 - Clients age distribution</h4>
+<p><img alt="scatter Matrix" src="images/scatter_matrix.png"/></p>
+<h4 align="center">Figure 13 - Scatter Matrix</h4>
 </div>
 </div>
 </div>
@@ -12047,11 +12047,30 @@ The description of the columns follow:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Algorithms-and-Techniques">Algorithms and Techniques<a class="anchor-link" href="#Algorithms-and-Techniques">&#182;</a></h3><p>The algorithms that will be used to tackle this binary classification problem are available at</p>
+<h3 id="Algorithms-and-Techniques">Algorithms and Techniques<a class="anchor-link" href="#Algorithms-and-Techniques">&#182;</a></h3><p>The algorithms that will be used to tackle this binary classification problem are all available in the <strong>scikit-learn</strong> library. As we don't know which algorithm would best fit the data, they were initially used with their default hyper-parameters and trained with the pre-processed training data in order to compare their results and choose the best one (taking into account the accuracy score) for further model tuning.</p>
 <ul>
-<li><em>Are the algorithms you will use, including any default variables/parameters in the project clearly defined?</em></li>
-<li><em>Are the techniques to be used thoroughly discussed and justified?</em></li>
-<li><em>Is it made clear how the input data or datasets will be handled by the algorithms and techniques chosen?</em></li>
+<li><p><strong>Gaussian Naive Bayes (GaussianNB):</strong> Naive Bayes methods are supervised learning algorithms based on Bayes' theorem. Their are called 'naive' because they assume independence between all features. In this project, GaussianNB wasn't initialized with any parameter.</p>
+</li>
+<li><p><strong>Decision Trees:</strong> Decision Trees are supervised learning algorithms which can be used both for classification or regression. They predict the target variable by learning from the data simple decisions (e.g. is feature x greater than value y?) in the training process. In this project, DecisionTreeClassifier was initialized with random_state=1.</p>
+</li>
+<li><p><strong>Bagging (Ensemble Methods):</strong> Bagging (Bootstrap Aggregating) is an ensemble meta-algorithm that fits base classifiers on random subsets of the original one and eventually aggregate all individual predictions (which can be done by averaging or by voting) yielding a final prediction. In this project, BaggingClassifier was initialized with random_state=1.</p>
+</li>
+<li><p><strong>AdaBoost (Ensemble Methods):</strong> Adaboost (Adaptive Boosting) is also an ensemble meta-algorithm that starts fitting a classifier from the original dataset and later fits copies of the same classifier on the same dataset but this time focusing on the incorrect classifications, adjusting the weights on these cases. In this project, AdaBoostClassifier was initialized with random_state=1.</p>
+</li>
+<li><p><strong>Random Forest (Ensemble Methods):</strong> Random Forests (or Random Decision Forests) are also an ensemble meta-algorithm that works by fitting various decision trees classifiers on different subsets of the original dataset, averaging the prediction of all decision trees for the final prediction output. In this project, RandomForestClassifier was initialized with random_state=1.</p>
+</li>
+<li><p><strong>Linear Discriminant Analysis (LDA):</strong> Linear Discriminant Analysis is a generalization of Fisher's linear discriminant method, used to find a linear combination of features from the dataset that separate two (or more) classes. The fitted model can also be used for dimensionality reduction. In this project, LinearDiscriminantAnalysis wasn't initialized with any parameter.</p>
+</li>
+<li><p><strong>K-Nearest Neighbors (KNeighbors):</strong> Neighbors-based classification is a kind of instance-based learning, storing instances of the training data and classifying each point by computing from majority vote of the nearest neighbors of each data point. For instance, if 8 of the 10 nearest data points from data point X is classified as class 'A', then data point X is also going to be classified as class 'A'. In this project, KNeighborsClassifier wasn't initialized with any parameter.</p>
+</li>
+<li><p><strong>Stochastic Gradient Descent (SGDC):</strong> Stochastic Gradient Descent is a very efficient approach to discriminative learning of linear classifiers under convex loss functions (such as linear SVM and Logistic Regression). Recently this algorithmn has gained attention in the context of large scale learning. In this project, SGDClassifier wasn't initialized with any parameter.</p>
+</li>
+<li><p><strong>Support Vector Machines:</strong> Support Vector Machines are a set of supervosed machine learning algorithms which can be used both for classification or regression purposes. They are commonly used in classification problems and they work by trying to find a hyperplane that best divides a dataset into classes. Support vectors are the nearest data points to the hyperplane, they are critical elements of the data set because removing them would change the position of the hyperplanes. In this project, SVC was initialized with random_state=1.</p>
+</li>
+<li><p><strong>Logistic Regression:</strong> Logistic Regression a supervised learning technique borrowed from statistics for binary classification problems. Its name comes from the function used at the core of the algorithm: the logistic function (or sigmoid function). Logistic Regression works by modeling the probability of the 'default' class. In this project, LogisticRegression was initialized with random_state=1.</p>
+</li>
+<li><p><strong>eXtreme Gradient Boosting (XGBoost):</strong> XGBoost is an implementation of gradient boosted tree algorithms. It was engineered focusing on efficiency of computing time and memory resources. Boosting is an ensemble method which adds new models in order to correct the errors made by existing models. In this project, XGBClassifier was initialized with random_state=1.</p>
+</li>
 </ul>
 
 </div>
@@ -12061,11 +12080,7 @@ The description of the columns follow:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Benchmark">Benchmark<a class="anchor-link" href="#Benchmark">&#182;</a></h3><p>In this section, you will need to provide a clearly defined benchmark result or threshold for comparing across performances obtained by your solution. The reasoning behind the benchmark (in the case where it is not an established result) should be discussed. Questions to ask yourself when writing this section:</p>
-<ul>
-<li><em>Has some result or value been provided that acts as a benchmark for measuring performance?</em></li>
-<li><em>Is it clear how this result or value was obtained (whether by data or by hypothesis)?</em></li>
-</ul>
+<h3 id="Benchmark">Benchmark<a class="anchor-link" href="#Benchmark">&#182;</a></h3><p>The main benchmark considered for this project is a naive predictor that predicts the majority class. In this case, the naive predictor has accuracy of <strong>88.51%</strong> and F1-score of <strong>0.0%</strong>. Also, the best untuned model chosen from the Algorithms and Techniques section will be compared to its tuned version. It is expected that the newly tuned model may overcome the benchmark model accuracy and F1-score.</p>
 
 </div>
 </div>
@@ -12074,12 +12089,17 @@ The description of the columns follow:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="III.-Methodology">III. Methodology<a class="anchor-link" href="#III.-Methodology">&#182;</a></h2><h3 id="Data-Preprocessing">Data Preprocessing<a class="anchor-link" href="#Data-Preprocessing">&#182;</a></h3><p>In this section, all of your preprocessing steps will need to be clearly documented, if any were necessary. From the previous section, any of the abnormalities or characteristics that you identified about the dataset will be addressed and corrected here. Questions to ask yourself when writing this section:</p>
+<h2 id="III.-Methodology">III. Methodology<a class="anchor-link" href="#III.-Methodology">&#182;</a></h2><h3 id="Data-Preprocessing">Data Preprocessing<a class="anchor-link" href="#Data-Preprocessing">&#182;</a></h3><p>Before training and testing our classification models, the dataset should be prepared and preprocessed. One of the reasons is that it may contain non-numeric features or null values and most of machine learning algorithms expect numbers to perform computations with.</p>
+<p>In our case, the dataset didn't present null values, so the first task was to apply pandas_get_dummies in order to convert categorical features into binary variables (e.g. feature <strong>marital</strong> has 3 possible string values: single, married and divorced. After the conversion, feature <strong>marital</strong> was replaced by 3 features: <strong>marital_divorced</strong>, <strong>marital_married</strong> and <strong>marital_single</strong> where possible values are 0 or 1), generating what we call dummy variables.</p>
+<p>The second preprocessing task was to replace every feature which had either 'yes' or 'no' as possible values to binary values (respectively 1 and 0). After that, the entire dataset was split into features (X - all features but the target) and target (Y - the last column) datasets.</p>
+<p>With the features and target datasets in hand, these data were shuffled and split into 4:</p>
 <ul>
-<li><em>If the algorithms chosen require preprocessing steps like feature selection or feature transformations, have they been properly documented?</em></li>
-<li><em>Based on the <strong>Data Exploration</strong> section, if there were abnormalities or characteristics that needed to be addressed, have they been properly corrected?</em></li>
-<li><em>If no preprocessing is needed, has it been made clear why?</em></li>
+<li><strong>X_train:</strong> dataset used for model training with 70% of the original size containing all features but the target.</li>
+<li><strong>y_train:</strong> dataset used for model training with 70% of the original size containing the target variable.</li>
+<li><strong>X_test:</strong> dataset used for model testing with 30% of the original size containing all features but the target.</li>
+<li><strong>y_test:</strong> dataset used for model testing with 30% of the original size containing the target variable.</li>
 </ul>
+<p>As the last step, X_train and X_test were transformed (normalized) using StandardScaler in order to have mean 0 and a standard deviation 1 before applying the machine learning algorithms.</p>
 
 </div>
 </div>
